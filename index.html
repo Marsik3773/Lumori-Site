@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#1b0c14" name="theme-color"/>
+<meta content="Lumori — ванильный Minecraft-сервер стримеров Dami_Aria и Marsik3773. Версия 26.3, выживание, сообщество и мини-игры." name="description"/>
+<title>Lumori — Minecraft Server</title>
+<link href="assets/site/lumori-planet.png" rel="icon"/>
+<link as="image" href="assets/site/lumori-hero.png" rel="preload"/>
+<link href="styles.css?v=lumori-particles-8" rel="stylesheet"/>
+</head>
+<body>
+<div aria-hidden="true" class="ambient-bg"></div>
+<!-- Decorative animated aurora ribbons: above page background, non-interactive. -->
+<div aria-hidden="true" class="lumori-aurora">
+  <svg class="lumori-aurora-art" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="lumori-ribbon-a" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a65c7b" stop-opacity="0"/><stop offset=".27" stop-color="#ba795f" stop-opacity=".48"/><stop offset=".57" stop-color="#a86994" stop-opacity=".56"/><stop offset=".82" stop-color="#79639f" stop-opacity=".43"/><stop offset="1" stop-color="#79639f" stop-opacity="0"/></linearGradient>
+      <linearGradient id="lumori-ribbon-b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#766299" stop-opacity="0"/><stop offset=".34" stop-color="#8770aa" stop-opacity=".38"/><stop offset=".68" stop-color="#b87e74" stop-opacity=".48"/><stop offset="1" stop-color="#b87e74" stop-opacity="0"/></linearGradient>
+      <filter id="lumori-ribbon-blur" x="-35%" y="-100%" width="170%" height="300%"><feGaussianBlur stdDeviation="18"/></filter>
+    </defs>
+    <g class="lumori-ribbon lumori-ribbon-one">
+      <path d="M -250 645 C 155 235 390 825 800 390 S 1320 90 1700 270" fill="none" stroke="url(#lumori-ribbon-a)" stroke-width="120" stroke-linecap="round" filter="url(#lumori-ribbon-blur)"/>
+      <path d="M -250 645 C 155 235 390 825 800 390 S 1320 90 1700 270" fill="none" stroke="url(#lumori-ribbon-a)" stroke-width="17" stroke-linecap="round" opacity=".67"/>
+    </g>
+    <g class="lumori-ribbon lumori-ribbon-two">
+      <path d="M -200 140 C 280 460 390 -90 850 250 S 1330 870 1650 545" fill="none" stroke="url(#lumori-ribbon-b)" stroke-width="100" stroke-linecap="round" filter="url(#lumori-ribbon-blur)"/>
+      <path d="M -200 140 C 280 460 390 -90 850 250 S 1330 870 1650 545" fill="none" stroke="url(#lumori-ribbon-b)" stroke-width="10" stroke-linecap="round" opacity=".58"/>
+    </g>
+  </svg>
+</div>
+<div aria-hidden="true" class="lumori-sky"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div aria-hidden="true" class="grain"></div>
+<header class="topbar" id="top">
+<a aria-label="Lumori — наверх" class="brand" href="#top">
+<img alt="Символ сервера Lumori" src="assets/site/lumori-planet.png"/>
+<span class="brand-copy">
+<strong>LUMORI</strong>
+<small>Minecraft server</small>
+</span>
+</a>
+<nav aria-label="Основная навигация" class="nav">
+<a data-feed="server" href="#server-feed">О сервере</a>
+<a data-feed="rules" href="#rules-feed">Правила сервера</a>
+<a class="nav-shop" data-link="shop" href="https://lumori.millida.trade/" rel="noopener noreferrer" target="_blank">Магазин</a>
+</nav>
+<a class="primary-btn header-play-btn" href="https://discord.gg/Qmb85f8mDH" target="_blank" rel="noopener noreferrer">Начать играть с нами</a>
+</header>
+<main>
+<div class="site-feed server-feed" id="server-feed">
+<section aria-labelledby="hero-title" class="hero section-shell">
+<div aria-hidden="true" class="hero-backdrop"></div>
+<div class="hero-copy reveal">
+<div class="eyebrow server-status" id="server-status" role="status" aria-live="polite"><span class="spark" aria-hidden="true"></span><span id="server-status-text">Проверяем сервер...</span></div>
+<h1 id="hero-title">LUMORI</h1>
+<p class="hero-lead">Ванильный Minecraft-сервер про уютное выживание, живое сообщество и мини-игры, которые будут развиваться вместе с нами.</p>
+<div aria-label="Основная информация" class="tag-row">
+<span class="tag">Выживание</span>
+<span class="tag">Ваниль</span>
+<span class="tag">Мини-игры</span>
+<span class="tag">Города</span>
+<span class="tag">Ивенты</span>
+<span class="tag">Голосовой чат</span>
+<span class="tag">Стримы</span>
+<span class="tag">Без приватов</span>
+</div>
+<div class="hero-server-actions">
+<div aria-label="Версия сервера" class="hero-version">
+<span class="hero-version-label">Версия сервера</span> <strong>26.3</strong>
+</div>
+<button aria-label="Скопировать IP-адрес сервера" class="primary-btn hero-copy-ip" id="copy-ip" type="button">
+<span><small>Скопировать IP</small><strong id="server-ip">mc.lumori.su</strong></span>
+</button>
+</div>
+</div>
+<div aria-label="Символ Lumori" class="hero-mark reveal">
+<div class="planet-aura"></div>
+<img alt="Планета Lumori — официальный символ сервера" src="assets/site/lumori-planet.png"/>
+<span class="orbit-label">наш уютный мир</span>
+</div>
+</section>
+<section aria-labelledby="discord-title" class="discord-cta section-shell reveal" id="discord">
+<div class="discord-card">
+<div class="discord-copy">
+<span class="kicker">DISCORD · COMMUNITY</span>
+<h2 id="discord-title">Присоединяйся к нашему Discord-серверу</h2>
+<p>Все важные вещи - в одном месте: анонсы, ивенты, объявления, новости сервера, дружеские посиделки и голосовое общение с игроками Lumori.</p>
+<a class="primary-btn discord-join-btn" href="https://discord.gg/Qmb85f8mDH" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true" class="btn-icon">✦</span>
+<span><small>Discord Lumori</small><strong>Присоединиться</strong></span>
+</a>
+</div>
+</div>
+</section>
+<section aria-labelledby="about-title" class="about section-shell reveal" id="about">
+<div class="about-panel">
+<div class="about-copy">
+<span class="kicker">LUMORI</span>
+<h2 id="about-title">Сервер, который не стоит на месте.</h2>
+<p>Lumori - это ванильный Minecraft сервер. Здесь можно строить, исследовать мир, знакомиться с людьми и просто играть в своём темпе.<br/><br/>Параллельно на сервере будут появляться и развиваться мини-игры - отдельные активности, к которым можно возвращаться между большими приключениями в основном мире.</p>
+</div>
+<div aria-label="Галерея скриншотов сервера" class="about-gallery"><div class="gallery-top"><span class="kicker">ГАЛЕРЕЯ</span><span aria-live="polite" class="gallery-counter">Загрузка...</span></div><div class="gallery-photo-wrap"><button aria-label="Открыть изображение на весь экран" class="gallery-open" title="Открыть на весь экран" type="button" disabled><img alt="" id="gallery-preview" loading="lazy"/><span aria-hidden="true" class="gallery-expand">⛶</span></button></div><div class="gallery-controls"><button aria-label="Предыдущий скриншот" class="gallery-arrow gallery-prev" type="button">←</button><div aria-label="Выбор изображения" class="gallery-dots"></div><button aria-label="Следующий скриншот" class="gallery-arrow gallery-next" type="button">→</button></div></div></div>
+</section>
+<section class="server-age section-shell reveal" aria-labelledby="server-age-title">
+  <div class="server-age-card">
+    <div class="server-age-heading"><span class="kicker">НАША ИСТОРИЯ</span><h2 id="server-age-title">Lumori растёт вместе с вами</h2><p>С момента создания сервера · 14 сентября 2026 года</p></div>
+    <div class="server-age-clock" role="timer" aria-label="Время с момента создания сервера">
+      <div class="server-age-unit"><strong id="server-age-years">0</strong><span id="server-age-years-label">лет</span></div>
+      <span class="server-age-separator" aria-hidden="true">·</span>
+      <div class="server-age-unit"><strong id="server-age-months">0</strong><span id="server-age-months-label">месяцев</span></div>
+      <span class="server-age-separator" aria-hidden="true">·</span>
+      <div class="server-age-unit"><strong id="server-age-days">0</strong><span id="server-age-days-label">дней</span></div>
+    </div>
+  </div>
+</section>
+<section aria-labelledby="creators-title" class="creators section-shell reveal">
+<div aria-label="Dami_Aria и Marsik3773" class="creators-visual" role="img"></div>
+<div class="creators-copy">
+<span class="kicker">СОЗДАТЕЛИ</span>
+<h2 id="creators-title">Сервер стримеров <span class="creator-title-names">Dami_Aria и Marsik3773</span></h2>
+<p>Lumori строится вокруг их совместного сообщества: стримы, выживание, события, идеи игроков и новые игровые режимы.</p>
+<div aria-label="Ссылки на соцсети стримеров" class="social-stack creators-social-stack">
+<div class="social-row">
+<span class="social-row-label">Dami_Aria:</span>
+<div class="social-icons">
+<a aria-label="Discord Dami_Aria" class="social-icon-btn discord" href="https://discord.gg/Qmb85f8mDH" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M20.3 4.37A16.7 16.7 0 0 0 16.2 3a11.7 11.7 0 0 0-.53 1.1a15.2 15.2 0 0 0-7.34 0A11.7 11.7 0 0 0 7.8 3a16.6 16.6 0 0 0-4.1 1.37C1.1 8.24.4 12 .75 15.7A16.9 16.9 0 0 0 5.8 18.2c.42-.57.79-1.18 1.1-1.82c-.6-.23-1.18-.52-1.72-.86c.14-.1.27-.2.4-.31c3.3 1.55 6.88 1.55 10.14 0c.13.11.26.21.4.31c-.54.34-1.12.63-1.72.86c.31.64.68 1.25 1.1 1.82a16.8 16.8 0 0 0 5.04-2.5c.42-4.3-.72-8.03-2.24-11.33ZM9.54 13.43c-.98 0-1.78-.9-1.78-2s.79-2 1.78-2c1 0 1.79.9 1.78 2c0 1.1-.79 2-1.78 2Zm4.92 0c-.98 0-1.78-.9-1.78-2s.79-2 1.78-2c1 0 1.79.9 1.78 2c0 1.1-.79 2-1.78 2Z" fill="currentColor"></path></svg>
+</a>
+<a aria-label="Telegram Dami_Aria" class="social-icon-btn telegram" href="https://t.me/dami_aria" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M21.5 4.5L18.6 19c-.22 1.03-.8 1.28-1.63.8l-4.5-3.32l-2.17 2.1c-.24.24-.45.45-.9.45l.32-4.58l8.34-7.54c.36-.32-.08-.5-.56-.18L7.2 13.18l-4.42-1.38c-.96-.3-.98-.96.2-1.42L20.24 3.7c.8-.3 1.5.18 1.26.8Z" fill="currentColor"></path></svg>
+</a>
+<a aria-label="Twitch Dami_Aria" class="social-icon-btn twitch" href="https://www.twitch.tv/dami_aria" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 2h18v12l-4 4h-4l-2 2H8v-2H3V2Zm16 11V4H5v11h4v2l2-2h4l4-2Zm-8-6h2v5h-2V7Zm4 0h2v5h-2V7Z" fill="currentColor"></path></svg>
+</a>
+<a aria-label="Donation Alerts Dami_Aria" class="social-icon-btn donate" href="https://www.donationalerts.com/r/dami_aria" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2l2.65 5.37L20.6 8.2l-4.3 4.18l1.02 5.92L12 15.52L6.68 18.3l1.02-5.92L3.4 8.2l5.95-.83L12 2Z" fill="currentColor"></path></svg>
+</a>
+<a aria-label="TikTok Dami_Aria" class="social-icon-btn tiktok" href="https://www.tiktok.com/@dami_aria?_r=1&amp;_t=ZS-95ohLLMDwGn" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M14.5 3c.44 1.67 1.44 2.98 3.1 3.9c.84.47 1.72.73 2.6.8v2.9c-1.57-.03-3.16-.48-4.7-1.45v6.83A5.98 5.98 0 1 1 9.5 10v3.09a3.16 3.16 0 1 0 3.16 3.16V3h1.84Z" fill="currentColor"></path></svg>
+</a></div>
+</div>
+<div class="social-row">
+<span class="social-row-label">Marsik3773:</span>
+<div class="social-icons">
+<a aria-label="Telegram Marsik3773" class="social-icon-btn telegram" href="https://t.me/marselechka" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M21.5 4.5L18.6 19c-.22 1.03-.8 1.28-1.63.8l-4.5-3.32l-2.17 2.1c-.24.24-.45.45-.9.45l.32-4.58l8.34-7.54c.36-.32-.08-.5-.56-.18L7.2 13.18l-4.42-1.38c-.96-.3-.98-.96.2-1.42L20.24 3.7c.8-.3 1.5.18 1.26.8Z" fill="currentColor"></path></svg>
+</a>
+<a aria-label="Twitch Marsik3773" class="social-icon-btn twitch" href="https://www.twitch.tv/marsik3773" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 2h18v12l-4 4h-4l-2 2H8v-2H3V2Zm16 11V4H5v11h4v2l2-2h4l4-2Zm-8-6h2v5h-2V7Zm4 0h2v5h-2V7Z" fill="currentColor"></path></svg>
+</a>
+<a aria-label="Donation Alerts Marsik3773" class="social-icon-btn donate" href="https://www.donationalerts.com/r/marsik3773" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2l2.65 5.37L20.6 8.2l-4.3 4.18l1.02 5.92L12 15.52L6.68 18.3l1.02-5.92L3.4 8.2l5.95-.83L12 2Z" fill="currentColor"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="live-title" class="live-section section-shell reveal" id="live">
+<div class="section-heading compact-heading">
+<div>
+<span class="kicker">LIVE</span>
+<h2 id="live-title">Кто сейчас в эфире?</h2>
+</div>
+<p>Статус обновляется автоматически примерно раз в минуту.</p>
+</div>
+<div class="live-grid">
+<a class="live-card dami" href="https://www.twitch.tv/dami_aria" id="dami-live-card" rel="noopener noreferrer" target="_blank">
+<div aria-hidden="true" class="live-photo"></div>
+<div aria-hidden="true" class="live-shade"></div>
+<div class="live-card-top">
+<span class="streamer-name">Dami_Aria</span>
+<span class="status-pill checking" id="dami-status"><i></i><span>Проверяем…</span></span>
+</div>
+<div class="live-card-bottom">
+<span>Открыть Twitch</span><span aria-hidden="true">↗</span>
+</div>
+</a>
+<a class="live-card marsik" href="https://www.twitch.tv/marsik3773" id="marsik-live-card" rel="noopener noreferrer" target="_blank">
+<div aria-hidden="true" class="live-photo"></div>
+<div aria-hidden="true" class="live-shade"></div>
+<div class="live-card-top">
+<span class="streamer-name">Marsik3773</span>
+<span class="status-pill checking" id="marsik-status"><i></i><span>Проверяем…</span></span>
+</div>
+<div class="live-card-bottom">
+<span>Открыть Twitch</span><span aria-hidden="true">↗</span>
+</div>
+</a>
+</div>
+</section>
+<section aria-labelledby="join-title" class="join section-shell reveal">
+<div class="join-card">
+<div class="join-copy">
+<span class="kicker">26.3 · VANILLA</span>
+<h2 id="join-title">Присоединяйся к <span class="join-title-accent">Lumori.</span></h2>
+<p>Там, где хорошие люди, тёплые стримы и мир, который мы строим вместе.</p>
+</div>
+<button class="primary-btn join-ip" id="copy-ip-bottom" type="button">
+<span aria-hidden="true" class="btn-icon">⧉</span>
+<span><small>Скопировать IP</small><strong id="server-ip-bottom">mc.lumori.su</strong></span>
+</button>
+</div>
+</section>
+</div>
+<div class="site-feed rules-feed" id="rules-feed" style="display:none;">
+<section aria-labelledby="rules-title" class="rules section-shell reveal" id="rules">
+<div class="section-heading">
+<div>
+<h2 id="rules-title">Свод правил</h2>
+</div>
+<div class="rules-discord-box">
+<p>Все обновления и актуальная версия публикуются в Discord-канале сервера.</p>
+<a class="primary-btn" href="https://discord.com/channels/1509958866861953167/1515509602559594506" rel="noopener noreferrer" target="_blank">
+<span>Перейти в Discord</span>
+</a>
+</div>
+</div>
+<div class="rules-content">
+<p class="rule-text">Добро пожаловать в Lumori! Здесь можно строить, исследовать мир, торговать, создавать города и проводить время с другими игроками. Чтобы всем было комфортно, просим соблюдать следующие условия.</p>
+<h2 class="rules-main-title">1. Общие положения</h2>
+<h4 class="rule-item-title">1.1. Согласие</h4>
+<p class="rule-text">Начиная играть на Lumori, вы принимаете действующий свод правил. Незнание установленных требований не освобождает от ответственности.</p>
+<p class="rule-text"><strong>Наказание:</strong> Согласно нарушенному пункту.</p>
+<hr/>
+<h4 class="rule-item-title">1.2. Законодательство</h4>
+<p class="rule-text">На сервере запрещены действия и материалы, нарушающие применимое законодательство.</p>
+<p class="rule-text"><strong>Наказание:</strong> Удаление запрещённого материала и бан в зависимости от тяжести нарушения.</p>
+<hr/>
+<h4 class="rule-item-title">1.3. Жалобы и обращения</h4>
+<p class="rule-text">При обнаружении нарушения, возникновении спора или необходимости обжаловать наказание создайте тикет в разделе «Поддержка» официального Discord-сервера Lumori. Опишите, что произошло, укажите ники участников и примерное время события. По возможности приложите скриншоты, запись или другие доказательства.</p>
+<p class="rule-text"><strong>Наказание:</strong> За заведомо ложные жалобы и поддельные доказательства — предупреждение, мут или бан.</p>
+<hr/>
+<h4 class="rule-item-title">1.4. Обход ограничений</h4>
+<p class="rule-text">Запрещено намеренно использовать лазейки в формулировках, ошибки сервера и другие способы обхода установленных требований.</p>
+<p class="rule-text"><strong>Наказание:</strong> Согласно фактически совершённому нарушению.</p>
+<hr/>
+<h4 class="rule-item-title">1.5. Повторные нарушения</h4>
+<p class="rule-text">При повторных и систематических нарушениях срок наказания увеличивается.</p>
+<p class="rule-text"><strong>Наказание:</strong> Увеличение срока мута или бана вплоть до перманентного.</p>
+<hr/>
+<h4 class="rule-item-title">1.6. Соучастие</h4>
+<p class="rule-text">Запрещено сознательно помогать другим игрокам совершать нарушения, участвовать в запрещённых схемах и скрывать незаконно полученные ресурсы.</p>
+<p class="rule-text"><strong>Наказание:</strong> Определяется степенью участия и тяжестью нарушения.</p>
+<hr/>
+<h4 class="rule-item-title">1.7. Равенство игроков</h4>
+<p class="rule-text">Донат, популярность, должность или участие в городе не освобождают от ответственности.</p>
+<p class="rule-text"><strong>Наказание:</strong> Согласно нарушенному пункту.</p>
+<hr/>
+<h4 class="rule-item-title">1.8. Возврат ресурсов</h4>
+<p class="rule-text">Администрация не обязана возвращать предметы, потерянные по вине игрока или в ходе обычной игры. Возврат возможен при подтверждённой ошибке сервера или нарушении со стороны другого игрока.</p>
+<p class="rule-text"><strong>Наказание:</strong> Не предусмотрено.</p>
+<hr/>
+<h4 class="rule-item-title">1.9. Решения администрации</h4>
+<p class="rule-text">При рассмотрении ситуации команда Lumori учитывает её обстоятельства и может назначить компенсацию пострадавшим, изъять незаконно полученные ресурсы или изменить срок наказания в зависимости от тяжести нарушения.</p>
+<p class="rule-text"><strong>Наказание:</strong> Определяется совершённым нарушением.</p>
+<hr/>
+<h4 class="rule-item-title">1.10. Обновления</h4>
+<p class="rule-text">Администрация вправе изменять и дополнять данный свод. Актуальная редакция публикуется на официальном сайте Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> Не предусмотрено.</p>
+<hr/>
+<h2 class="rules-main-title">2. Чат и общение</h2>
+<p class="rule-text"><strong>Требования этого раздела действуют в игровом чате, Simple Voice Chat, Discord Lumori, личных сообщениях, книгах, на табличках, в названиях предметов и существ, а также при использовании других способов общения.</strong></p>
+<h4 class="rule-item-title">2.1. Спам и флуд</h4>
+<p class="rule-text">Запрещены повторяющиеся сообщения, бессмысленный текст, чрезмерное использование CAPS и засорение чата символами. Не отправляйте одно и то же сообщение несколько раз подряд и не мешайте другим участникам вести беседу.</p>
+<p class="rule-text"><strong>Наказание:</strong> Мут 5–15 минут. При повторении срок увеличивается.</p>
+<hr/>
+<h4 class="rule-item-title">2.2. Нецензурная лексика</h4>
+<p class="rule-text">Запрещены чрезмерное использование мата и намеренный обход фильтра.</p>
+<p class="rule-text"><strong>Наказание:</strong> Мут 5–15 минут. При повторении срок увеличивается.</p>
+<hr/>
+<h4 class="rule-item-title">2.3. Оскорбления и травля</h4>
+<p class="rule-text">Запрещены унижение игроков, намеренные провокации, оскорбления и травля. Не превращайте личные разногласия в публичный конфликт и не призывайте других участников присоединяться к травле.</p>
+<p class="rule-text"><strong>Наказание:</strong> Мут от 30 минут до 24 часов. При серьёзных или повторных нарушениях — бан.</p>
+<hr/>
+<h4 class="rule-item-title">2.4. Оскорбление близких</h4>
+<p class="rule-text">Запрещено оскорблять родителей, родственников и других близких людей игрока.</p>
+<p class="rule-text"><strong>Наказание:</strong> Мут от 2 до 24 часов. При повторении — длительный мут или бан.</p>
+<hr/>
+<h4 class="rule-item-title">2.5. Дискриминация</h4>
+<p class="rule-text">Запрещены унижение людей и разжигание ненависти по признакам расы, национальности, пола, происхождения и другим личным характеристикам.</p>
+<p class="rule-text"><strong>Наказание:</strong> Мут от 24 часов до перманентного. При тяжёлых нарушениях — бан.</p>
+<hr/>
+<h4 class="rule-item-title">2.6. Политика и религия</h4>
+<p class="rule-text">Запрещены политическая и религиозная агитация, провокации и конфликты.</p>
+<p class="rule-text"><strong>Наказание:</strong> Мут от 15 минут. При повторении срок увеличивается.</p>
+<hr/>
+<h4 class="rule-item-title">2.7. Реклама других проектов</h4>
+<p class="rule-text">Запрещено рекламировать сторонние Minecraft-серверы и другие проекты с целью переманивания игроков Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> Перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">2.8. Опасные ссылки</h4>
+<p class="rule-text">Запрещено распространять мошеннические, вредоносные и подозрительные ссылки.</p>
+<p class="rule-text"><strong>Наказание:</strong> Мут или бан в зависимости от тяжести нарушения.</p>
+<hr/>
+<h4 class="rule-item-title">2.9. Угрозы</h4>
+<p class="rule-text">Запрещены реальные угрозы игрокам, их близким и представителям команды Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> Мут от 24 часов до перманентного бана.</p>
+<hr/>
+<h4 class="rule-item-title">2.10. Персональные данные</h4>
+<p class="rule-text">Запрещено распространять чужие личные данные без согласия владельца или угрожать их публикацией.</p>
+<p class="rule-text"><strong>Наказание:</strong> Перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">2.11. Голосовой чат</h4>
+<p class="rule-text">Запрещены намеренные крики, звуковой спам, чрезмерно громкая музыка и другие звуки, мешающие окружающим. Если игрок просит снизить громкость или прекратить мешающий звук, отнеситесь к просьбе уважительно.</p>
+<p class="rule-text"><strong>Наказание:</strong> Голосовой мут от 5 минут. При повторных нарушениях — длительный или перманентный голосовой мут.</p>
+<hr/>
+<h4 class="rule-item-title">2.12. Обход мута</h4>
+<p class="rule-text">Запрещено обходить мут через другой аккаунт, голосовой чат, таблички, книги и другие способы.</p>
+<p class="rule-text"><strong>Наказание:</strong> Увеличение срока мута вплоть до бана.</p>
+<hr/>
+<h4 class="rule-item-title">2.13. Попрошайничество</h4>
+<p class="rule-text">Запрещено постоянно выпрашивать ресурсы, АРы, привилегии и услуги, особенно после отказа.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение или мут 5–15 минут.</p>
+<hr/>
+<h4 class="rule-item-title">2.14. Обращение к администрации</h4>
+<p class="rule-text">Запрещено спамить упоминаниями сотрудников и требовать немедленного рассмотрения обращения. Для жалоб и решения проблем используйте тикеты в разделе «Поддержка».</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение или мут 5–15 минут.</p>
+<hr/>
+<h4 class="rule-item-title">2.15. Критика сервера</h4>
+<p class="rule-text">Конструктивная критика Lumori и действий команды разрешена. Запрещены оскорбления, травля и заведомо ложные обвинения.</p>
+<p class="rule-text"><strong>Наказание:</strong> Согласно соответствующему пункту этого раздела.</p>
+<hr/>
+<h4 class="rule-item-title">2.16. Ложная официальная информация</h4>
+<p class="rule-text">Запрещено выдавать выдуманные объявления, решения и изменения установленных требований за официальную информацию Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение, мут или временный бан.</p>
+<hr/>
+<h2 class="rules-main-title">3. Игровой процесс</h2>
+<h4 class="rule-item-title">3.1. Читы</h4>
+<p class="rule-text">Запрещены любые читы, программы и функции, предоставляющие нечестное игровое преимущество.</p>
+<p class="rule-text"><strong>Наказание:</strong> Перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.2. Запрещённые модификации</h4>
+<p class="rule-text">Запрещены X-Ray, KillAura, Reach, ChestESP, SeedCracker, Baritone, AutoAttack, AutoTotem, AutoFish, FastBreak и другие модификации с аналогичными запрещёнными функциями. Xaero’s Minimap, Xaero’s World Map и обычные оптимизационные моды разрешены, если не используются для получения запрещённого преимущества.</p>
+<p class="rule-text"><strong>Наказание:</strong> За использование запрещённых функций — перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.3. Проверка на читы</h4>
+<p class="rule-text">При вызове на проверку игрок обязан в течение 5 минут присоединиться к указанному голосовому каналу Discord и выполнять относящиеся к проверке Minecraft инструкции. Администрация не вправе требовать пароли, банковские данные и личную переписку.</p>
+<p class="rule-text"><strong>Наказание:</strong> За отказ, выход с сервера после вызова или намеренное препятствование проверке — перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.4. Баги и дюпы</h4>
+<p class="rule-text">Запрещено использовать ошибки игры или сервера для получения ресурсов и преимуществ, в том числе повторять найденный способ ради личной выгоды или передавать его другим игрокам для использования. Об обнаруженных серьёзных ошибках необходимо сообщать через тикет в «Поддержку».</p>
+<p class="rule-text"><strong>Наказание:</strong> Изъятие полученных ресурсов и бан игрового аккаунта. При крупном или повторном нарушении — перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.5. Гриферство</h4>
+<p class="rule-text">Запрещено ломать чужие постройки, воровать ресурсы, портить территории и убивать принадлежащих другим игрокам животных. Отсутствие замка, привата или таблички не означает, что чужое имущество можно забирать или изменять.</p>
+<p class="rule-text"><strong>Наказание:</strong> Возврат ресурсов или компенсация ущерба и бан от 7 дней до перманентного.</p>
+<hr/>
+<h4 class="rule-item-title">3.6. PvP без согласия</h4>
+<p class="rule-text">Запрещено убивать игроков и намеренно наносить им урон без согласия. Исключение — специальные PvP-зоны и официально согласованные мероприятия.</p>
+<p class="rule-text"><strong>Наказание:</strong> Бан от 1 до 30 дней. При необходимости — компенсация ущерба.</p>
+<hr/>
+<h4 class="rule-item-title">3.7. Помехи игрокам</h4>
+<p class="rule-text">Запрещено намеренно мешать другим игрокам: блокировать проходы, преследовать, приводить опасных мобов к чужим базам и создавать ловушки. Не создавайте препятствия, из-за которых человек не может спокойно играть или пользоваться своей территорией.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение или временный бан. При повторении срок увеличивается.</p>
+<hr/>
+<h4 class="rule-item-title">3.8. Лаг-машины</h4>
+<p class="rule-text">Запрещено создавать механизмы, предназначенные для перегрузки сервера, возникновения лагов и сбоев.</p>
+<p class="rule-text"><strong>Наказание:</strong> Удаление механизма без компенсации и перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.9. Тяжёлые фермы</h4>
+<p class="rule-text">Фермы и механизмы не должны создавать чрезмерную нагрузку на сервер. Если работа устройства вызывает заметные лаги, администрация может попросить уменьшить его нагрузку, изменить конструкцию или временно отключить. По требованию администрации проблемный механизм необходимо изменить или отключить.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение и требование устранить проблему. При отказе — временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.10. Прогрузчики чанков</h4>
+<p class="rule-text">Запрещено использовать механизмы постоянной прогрузки чанков без разрешения администрации.</p>
+<p class="rule-text"><strong>Наказание:</strong> Удаление механизма и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.11. TNT-дюп</h4>
+<p class="rule-text">Запрещено использовать дублирование TNT для добычи ресурсов, расчистки территории и получения преимущества.</p>
+<p class="rule-text"><strong>Наказание:</strong> Удаление механизма, изъятие полученных ресурсов и бан до 30 дней.</p>
+<hr/>
+<h4 class="rule-item-title">3.12. Неприличные постройки</h4>
+<p class="rule-text">Запрещены откровенно сексуальные и другие явно неприемлемые постройки и материалы.</p>
+<p class="rule-text"><strong>Наказание:</strong> Удаление без компенсации и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.13. Запрещённая пропаганда</h4>
+<p class="rule-text">Запрещены призывы к употреблению наркотиков, алкоголя, табачной и аналогичной продукции.</p>
+<p class="rule-text"><strong>Наказание:</strong> Удаление материала, мут или временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.14. Ивенты</h4>
+<p class="rule-text">Участники официальных мероприятий обязаны соблюдать общие требования Lumori и условия конкретного ивента.</p>
+<p class="rule-text"><strong>Наказание:</strong> Исключение из мероприятия и, при необходимости, дополнительное наказание за совершённое нарушение.</p>
+<hr/>
+<h4 class="rule-item-title">3.15. Массовые раздачи</h4>
+<p class="rule-text">Крупные раздачи ресурсов и АРов, способные существенно повлиять на экономику сервера, необходимо согласовывать с администрацией.</p>
+<p class="rule-text"><strong>Наказание:</strong> Прекращение раздачи, изъятие незаконно распространённых ресурсов и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.16. Игровые договоры</h4>
+<p class="rule-text">Игроки могут заключать договоры о торговле, строительстве и других услугах. Условия рекомендуется фиксировать в подписанных книгах. Договор не может разрешать нарушение установленных требований Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> За намеренный обман или нарушение подтверждённого договора — компенсация ущерба, штраф или временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">3.17. Мошенничество</h4>
+<p class="rule-text">Запрещено намеренно обманывать игроков ради получения ресурсов, АРов, имущества или других преимуществ.</p>
+<p class="rule-text"><strong>Наказание:</strong> Возврат имущества или компенсация и временный бан. При крупном или повторном нарушении — вплоть до перманентного бана.</p>
+<hr/>
+<h4 class="rule-item-title">3.18. Шантаж и вымогательство</h4>
+<p class="rule-text">Запрещено требовать игровые ценности под угрозой гриферства, травли, ложных жалоб и другого вреда.</p>
+<p class="rule-text"><strong>Наказание:</strong> Временный или перманентный бан в зависимости от тяжести нарушения.</p>
+<hr/>
+<h2 class="rules-main-title">4. Территории и постройки</h2>
+<h4 class="rule-item-title">4.1. Чужие территории</h4>
+<p class="rule-text">Запрещено без разрешения владельца использовать чужие постройки, изменять территорию и забирать имущество. Если владелец попросил покинуть его базу, необходимо выполнить просьбу. Даже если проход на базу открыт, это не даёт разрешения пользоваться чужими сундуками, фермами и механизмами.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение или временный бан. За кражу и разрушения дополнительно применяется наказание за гриферство.</p>
+<hr/>
+<h4 class="rule-item-title">4.2. Обозначение территории</h4>
+<p class="rule-text">Рекомендуется обозначать границы своей территории табличками с ником владельца или названием города. Запрещено занимать огромные незастроенные участки только ради их резервирования.</p>
+<p class="rule-text"><strong>Наказание:</strong> Требование освободить необоснованно занятую территорию.</p>
+<hr/>
+<h4 class="rule-item-title">4.3. Захват территории</h4>
+<p class="rule-text">Запрещено занимать, перестраивать или уничтожать чужую базу без разрешения владельца.</p>
+<p class="rule-text"><strong>Наказание:</strong> Восстановление ущерба и бан до 30 дней.</p>
+<hr/>
+<h4 class="rule-item-title">4.4. Заброшенные базы</h4>
+<p class="rule-text">Запрещено самостоятельно присваивать и разбирать заброшенные постройки, даже если владелец давно не заходил на сервер. Для решения вопроса необходимо создать тикет в «Поддержке» и дождаться ответа администрации.</p>
+<p class="rule-text"><strong>Наказание:</strong> Возврат ресурсов, восстановление ущерба и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">4.5. Общественные территории</h4>
+<p class="rule-text">Запрещено самовольно изменять спавн, Незер-хаб, официальные дороги, магистрали и другие общественные территории.</p>
+<p class="rule-text"><strong>Наказание:</strong> Удаление изменений без компенсации и предупреждение или временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">4.6. Мусор на карте</h4>
+<p class="rule-text">Запрещено оставлять недорубленные деревья, бессмысленные столбы, земляные коробки, лавакасты и другой строительный мусор. После временных работ убирайте за собой блоки и конструкции, которые портят общий вид мира или мешают проходу.</p>
+<p class="rule-text"><strong>Наказание:</strong> Требование убрать территорию. При отказе — удаление построек без компенсации и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">4.7. Личные дороги и ветки</h4>
+<p class="rule-text">Личные ответвления от общественных дорог и Незер-магистралей не должны мешать другим игрокам. Запрещено прокладывать их через чужие ветки без разрешения владельца.</p>
+<p class="rule-text"><strong>Наказание:</strong> Требование исправить или перенести ветку. При отказе — временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">4.8. Незер-магистрали</h4>
+<p class="rule-text">Запрещено разрушать магистрали, перекрывать проходы, изменять оформление и размещать мешающие объекты.</p>
+<p class="rule-text"><strong>Наказание:</strong> Восстановление магистрали и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">4.9. Реклама на магистралях</h4>
+<p class="rule-text">Запрещено размещать рекламу на общественных дорогах и магистралях без разрешения администрации. Указатель на собственную ветку разрешён, если не мешает движению.</p>
+<p class="rule-text"><strong>Наказание:</strong> Удаление рекламы и предупреждение. При повторении — временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">4.10. Общественные фермы</h4>
+<p class="rule-text">Создание крупных общественных ферм необходимо согласовывать с администрацией.</p>
+<p class="rule-text"><strong>Наказание:</strong> Требование согласовать или изменить ферму. При отказе — её отключение или удаление и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">4.11. Сундуки в структурах</h4>
+<p class="rule-text">Запрещено намеренно уничтожать сундуки в естественных структурах исключительно для того, чтобы другие игроки не смогли ими воспользоваться.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение или временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">4.12. Территориальные споры</h4>
+<p class="rule-text">Запрещено решать споры о территории посредством убийств, угроз и гриферства. Для разрешения спора необходимо создать тикет в «Поддержке».</p>
+<p class="rule-text"><strong>Наказание:</strong> Согласно фактически совершённым нарушениям.</p>
+<hr/>
+<h2 class="rules-main-title">5. Торговля и экономика</h2>
+<h4 class="rule-item-title">5.1. Валюта Lumori</h4>
+<p class="rule-text">Валюта сервера — АР. 1 АР = 1 блок алмазной руды, добытый киркой с зачарованием «Шёлковое касание».</p>
+<hr/>
+<h4 class="rule-item-title">5.2. Система магазинов</h4>
+<p class="rule-text">На Lumori можно превратить сундук, бочку или шалкеровый ящик в автоматический магазин. Для создания магазина введите команду <code>/shop create</code>, затем нажмите правой кнопкой мыши на выбранный контейнер. После создания магазина владелец добавляет товары и устанавливает цены не ниже минимальных.</p>
+<hr/>
+<h4 class="rule-item-title">5.3. Каталог товаров</h4>
+<p class="rule-text">Все товары из зарегистрированных магазинов отображаются в общем каталоге, доступном по команде <code>/shop</code>. В каталоге можно посмотреть ассортимент, цены, координаты магазина и описание маршрута. Купить товар через каталог нельзя: покупатель должен лично добраться до магазина и приобрести товар через его контейнер.</p>
+<hr/>
+<h4 class="rule-item-title">5.4. Доступность магазина</h4>
+<p class="rule-text">Владелец обязан обеспечить покупателям доступ к магазину и указать понятное описание маршрута до него. Запрещено намеренно скрывать магазин, перекрывать проход к нему или указывать ложный маршрут.</p>
+<p class="rule-text"><strong>Наказание:</strong> Снос магазина без возврата находящихся в нём ресурсов и уменьшение лимита доступных магазинов минимум на 1 единицу. При повторных нарушениях — дальнейшее уменьшение лимита вплоть до полного запрета на создание магазинов.</p>
+<hr/>
+<h4 class="rule-item-title">5.5. Использование магазинов</h4>
+<p class="rule-text">Магазин предназначен исключительно для продажи товаров. Запрещено использовать магазины как личные хранилища, создавать их без намерения торговать или намеренно делать товары недоступными для покупателей.</p>
+<p class="rule-text"><strong>Наказание:</strong> Снос магазина без возврата находящихся в нём ресурсов и уменьшение лимита доступных магазинов минимум на 1 единицу. При повторных нарушениях — полный запрет на создание магазинов.</p>
+<hr/>
+<h4 class="rule-item-title">5.6. Лимиты магазинов</h4>
+<p class="rule-text">Один магазин — один зарегистрированный сундук, бочка или шалкеровый ящик. Обычному игроку доступны 3 бесплатных магазина, максимум — 10. Игроку с подпиской Plus доступны 10 бесплатных магазинов, максимум — 50. Дополнительные магазины можно приобретать за АРы до достижения установленного лимита.</p>
+<hr/>
+<h4 class="rule-item-title">5.7. Покупка дополнительных магазинов</h4>
+<p class="rule-text">Первый дополнительный магазин стоит 3 стака АР (192 АР), второй — 4 стака (256 АР), третий — 5 стаков (320 АР). Каждый следующий дополнительный магазин стоит на 1 стак АР дороже предыдущего. Бесплатные магазины не учитываются при расчёте стоимости дополнительных.</p>
+<hr/>
+<h4 class="rule-item-title">5.8. Ограничение лимита магазинов</h4>
+<p class="rule-text">При наказании за неправильное использование магазинов доступный игроку лимит уменьшается независимо от его статуса. Покупка дополнительных магазинов и подписка Plus не отменяют наложенное ограничение. При полном запрете на создание магазинов игрок теряет право пользоваться системой магазинов до снятия ограничения администрацией.</p>
+<hr/>
+<h4 class="rule-item-title">5.9. Минимальные цены</h4>
+<p class="rule-text">На сервере действуют минимальные цены на товары. Посмотреть их можно командой <code>/price</code>. Продавать товары ниже установленной минимальной стоимости запрещено.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение, отмена сделки и изъятие незаконной выгоды. При повторении — временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">5.10. Обход минимальных цен</h4>
+<p class="rule-text">Запрещено обходить <code>/price</code> через фиктивные сделки, скрытые обмены, возврат части оплаты и подарки, являющиеся частью торговой сделки. Обычные добровольные подарки разрешены.</p>
+<p class="rule-text"><strong>Наказание:</strong> Изъятие незаконной выгоды и бан до 30 дней.</p>
+<hr/>
+<h4 class="rule-item-title">5.11. Продажа ниже минимальной цены</h4>
+<p class="rule-text">Запрещено продавать, покупать и предлагать товары по цене ниже установленной минимальной стоимости.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение, отмена сделки и изъятие незаконной выгоды. При повторении — бан до 30 дней.</p>
+<hr/>
+<h4 class="rule-item-title">5.12. Торговля за реальные деньги</h4>
+<p class="rule-text">Запрещено покупать и продавать игровые предметы, АРы, аккаунты, постройки и услуги за реальные деньги или другие внешние ценности. Исключение — официальные услуги Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> Перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">5.13. Манипуляции с экономикой</h4>
+<p class="rule-text">Запрещено намеренно создавать искусственный дефицит, организовывать схемы для разрушения экономики и распространять незаконно полученные ресурсы. Обычная перепродажа товаров с соблюдением минимальных цен разрешена.</p>
+<p class="rule-text"><strong>Наказание:</strong> Изъятие незаконной выгоды и временный бан. При серьёзном или повторном нарушении — вплоть до перманентного бана.</p>
+<hr/>
+<h4 class="rule-item-title">5.14. Продажа аккаунтов</h4>
+<p class="rule-text">Запрещено продавать, покупать и передавать игровые аккаунты другим людям.</p>
+<p class="rule-text"><strong>Наказание:</strong> Перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">5.15. Поддельные предметы</h4>
+<p class="rule-text">Запрещено продавать предметы с поддельными зачарованиями, характеристиками и описаниями, вводящими покупателя в заблуждение.</p>
+<p class="rule-text"><strong>Наказание:</strong> Возврат ресурсов покупателю и бан до 30 дней.</p>
+<hr/>
+<h4 class="rule-item-title">5.16. Размещение магазинов</h4>
+<p class="rule-text">Магазин можно создать в любом разрешённом для строительства месте, в том числе на собственной территории или в специально отведённой торговой зоне. Запрещено размещать магазины на чужой территории без разрешения владельца, самовольно занимать общественные территории и перекрывать проходы к другим магазинам.</p>
+<p class="rule-text"><strong>Наказание:</strong> Требование перенести магазин. За намеренное ограничение доступа покупателей применяется наказание по п. 5.4.</p>
+<hr/>
+<h4 class="rule-item-title">5.17. Передача магазина</h4>
+<p class="rule-text">Запрещено продавать, передавать или сдавать в аренду зарегистрированный магазин другому игроку в обход системы Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> Отмена передачи и временная блокировка магазина.</p>
+<hr/>
+<h4 class="rule-item-title">5.18. Неактивные магазины</h4>
+<p class="rule-text">Если магазин длительное время не используется, администрация вправе отключить его и освободить торговое место. Если магазин используется как личное хранилище или намеренно сделан недоступным для покупателей, применяется наказание по п. 5.5.</p>
+<hr/>
+<h2 class="rules-main-title">6. Города</h2>
+<h4 class="rule-item-title">6.1. Создание города</h4>
+<p class="rule-text">Для официальной регистрации города необходимо создать тикет в разделе «Поддержка» Discord-сервера Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> За выдачу неофициального объединения за зарегистрированный город с целью обмана — предупреждение или временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">6.2. Устав города</h4>
+<p class="rule-text">Города могут устанавливать собственные внутренние требования, если они не противоречат общим условиям Lumori.</p>
+<p class="rule-text"><strong>Наказание:</strong> Отмена противоречащего положения устава. За фактическое нарушение применяются общие требования сервера.</p>
+<hr/>
+<h4 class="rule-item-title">6.3. Имущество города</h4>
+<p class="rule-text">Постройки и ресурсы, добровольно переданные городу или созданные за счёт его общих ресурсов, считаются собственностью города. Личные вещи жителя не становятся городскими только из-за того, что хранятся на территории города.</p>
+<p class="rule-text"><strong>Наказание:</strong> За присвоение городского имущества — возврат ресурсов, компенсация и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">6.4. Выход из города</h4>
+<p class="rule-text">После выхода или исключения игрок имеет право в течение 72 часов забрать принадлежащее ему личное имущество. Если доступ к вещам ограничен, участники должны согласовать возможность их забрать. Запрещено препятствовать возврату личных вещей или забирать имущество города под видом собственного.</p>
+<p class="rule-text"><strong>Наказание:</strong> Возврат имущества и временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">6.5. Ответственность жителей</h4>
+<p class="rule-text">Нарушение одного жителя не делает виновным весь город. Наказание получают только доказанные участники нарушения.</p>
+<p class="rule-text"><strong>Наказание:</strong> Согласно совершённому нарушению.</p>
+<hr/>
+<h4 class="rule-item-title">6.6. Войны городов</h4>
+<p class="rule-text">Войны разрешены только по добровольному согласию сторон и после одобрения администрации Lumori. До официального одобрения действуют обычные ограничения на PvP и гриферство.</p>
+<p class="rule-text"><strong>Наказание:</strong> За самовольное начало войны — согласно фактически совершённым нарушениям.</p>
+<hr/>
+<h4 class="rule-item-title">6.7. Договор войны</h4>
+<p class="rule-text">Перед войной главы городов должны согласовать участников, территорию, разрешённые действия, сроки и условия окончания. Каждый участник должен добровольно согласиться с условиями. Договор необходимо отправить администрации через тикет в «Поддержку».</p>
+<p class="rule-text"><strong>Наказание:</strong> За нарушение утверждённого договора — штраф, исключение из войны или временный бан. За гриферство и другие действия вне условий договора применяются общие требования сервера.</p>
+<hr/>
+<h4 class="rule-item-title">6.8. Посторонние во время войны</h4>
+<p class="rule-text">Запрещено намеренно вмешиваться в официальную войну, не являясь её участником.</p>
+<p class="rule-text"><strong>Наказание:</strong> Предупреждение и удаление из зоны конфликта. При повторении — временный бан.</p>
+<hr/>
+<h2 class="rules-main-title">7. Аккаунты и безопасность</h2>
+<h4 class="rule-item-title">7.1. Дополнительные аккаунты</h4>
+<p class="rule-text">Запрещено использовать дополнительные аккаунты для обхода наказаний, получения преимуществ и сокрытия личности.</p>
+<p class="rule-text"><strong>Наказание:</strong> Блокировка дополнительных аккаунтов и временный бан основного аккаунта.</p>
+<hr/>
+<h4 class="rule-item-title">7.2. Обход бана</h4>
+<p class="rule-text">Запрещено обходить блокировку через другой или чужой аккаунт, смену ника, VPN и другие способы.</p>
+<p class="rule-text"><strong>Наказание:</strong> Перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">7.3. Взлом аккаунтов</h4>
+<p class="rule-text">Запрещены взлом, попытки взлома, кража данных авторизации и получение несанкционированного доступа к чужим аккаунтам.</p>
+<p class="rule-text"><strong>Наказание:</strong> Перманентный бан.</p>
+<hr/>
+<h4 class="rule-item-title">7.4. Передача аккаунта</h4>
+<p class="rule-text">Запрещено передавать аккаунт другому человеку для обхода установленных ограничений. Игрок отвечает за действия, совершённые с использованием его аккаунта.</p>
+<p class="rule-text"><strong>Наказание:</strong> Согласно совершённому нарушению, вплоть до перманентного бана.</p>
+<hr/>
+<h4 class="rule-item-title">7.5. Восстановление доступа</h4>
+<p class="rule-text">При потере доступа администрация может запросить доказательства принадлежности аккаунта. Для обращения используйте тикет в «Поддержке» и сообщите сведения, которые помогут подтвердить владение аккаунтом, не раскрывая пароли и другие секретные данные. Если подтвердить владельца невозможно, в восстановлении может быть отказано.</p>
+<p class="rule-text"><strong>Наказание:</strong> Не предусмотрено.</p>
+<hr/>
+<h4 class="rule-item-title">7.6. Никнеймы</h4>
+<p class="rule-text">Запрещены никнеймы с оскорблениями, рекламой и другим недопустимым содержанием. Запрещено выдавать себя за другого игрока или сотрудника Lumori с целью обмана.</p>
+<p class="rule-text"><strong>Наказание:</strong> Требование сменить никнейм или бан. При мошенничестве применяется соответствующее наказание.</p>
+<hr/>
+<h4 class="rule-item-title">7.7. Скины</h4>
+<p class="rule-text">Запрещены откровенно непристойные скины и намеренное использование чужого образа для обмана или выдачи себя за другого человека.</p>
+<p class="rule-text"><strong>Наказание:</strong> Требование сменить скин. При отказе — временный бан.</p>
+<hr/>
+<h4 class="rule-item-title">7.8. Связанный Discord-аккаунт</h4>
+<p class="rule-text">При серьёзном нарушении блокировка может распространяться на связанный Discord-аккаунт игрока.</p>
+<p class="rule-text"><strong>Наказание:</strong> Соответствующая блокировка игрового и/или Discord-аккаунта.</p>
+<hr/>
+<h4 class="rule-item-title">Обжалование наказания</h4>
+<p class="rule-text">Если вы считаете наказание ошибочным, создайте тикет в разделе <strong>«Поддержка» Discord-сервера Lumori</strong> и опишите ситуацию.</p>
+<p class="rule-text">За добросовестное обжалование наказание не применяется.</p>
+<hr/>
+<p class="rule-text"><strong>Играйте честно, уважайте других игроков и берегите мир Lumori!</strong></p>
+</div>
+</section>
+</div>
+</main>
+<footer class="footer section-shell">
+<a class="footer-brand" href="#top"><img alt="" src="assets/site/lumori-planet.png"/><span>LUMORI</span></a>
+<div class="footer-info"><p>Vanilla Minecraft server · Dami_Aria × Marsik3773</p><p class="footer-disclaimer">Not affiliated with Mojang Studios or Microsoft.</p></div>
+<span>© <span id="year"></span> Lumori</span>
+</footer>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<div aria-label="Галерея Lumori" aria-modal="true" class="gallery-lightbox" hidden="" id="gallery-lightbox" role="dialog"><div class="lightbox-header"><span>Галерея Lumori</span><span aria-live="polite" class="lightbox-counter"></span><button aria-label="Закрыть галерею" class="lightbox-close" type="button">✕</button></div><button aria-label="Предыдущее изображение" class="lightbox-arrow lightbox-prev" type="button">←</button><img alt="" id="lightbox-image"/><button aria-label="Следующее изображение" class="lightbox-arrow lightbox-next" type="button">→</button></div><script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
