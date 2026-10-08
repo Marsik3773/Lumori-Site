@@ -4,6 +4,7 @@ LUMORI — сайт сервера
 Готовый статический сайт. Для GitHub Pages выберите Settings → Pages → Source: GitHub Actions.
 Workflow .github/workflows/pages.yml собирает список галереи и публикует статические файлы.
 Серверная часть не требуется. Статусы запрашиваются браузером у внешних API.
+Адрес https://lumori.su/ds перенаправляет на приглашение Discord через статическую страницу ds/index.html.
 
 Быстрые настройки:
 1. Откройте config.js.

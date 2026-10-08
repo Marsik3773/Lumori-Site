@@ -20,7 +20,7 @@ window.LUMORI_CONFIG = {
   },
 
   socials: [
-    { id: "discord", label: "Discord", url: "", hint: "сообщество" },
+    { id: "discord", label: "Discord", url: "https://discord.gg/dc2WhRhd3e", hint: "сообщество" },
     { id: "boosty", label: "Boosty", url: "", hint: "поддержка" },
     { id: "donation", label: "Donation Alerts", url: "", hint: "донаты" },
     { id: "twitch", label: "Twitch", url: "https://www.twitch.tv/dami_aria", hint: "Dami_Aria" },
