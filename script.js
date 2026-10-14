@@ -130,7 +130,7 @@
     checkChannel("marsik", "#marsik-status", "#marsik-live-card");
   }
   refreshLiveStatus();
-  setInterval(refreshLiveStatus, 60_000);
+  setInterval(() => { if (!document.hidden) refreshLiveStatus(); }, 60_000);
 
 
   // Проверяем указанный Minecraft-сервер через публичный API из браузера.
@@ -176,7 +176,13 @@
   }
 
   checkServerStatus();
-  setInterval(checkServerStatus, 60000);
+  setInterval(() => { if (!document.hidden) checkServerStatus(); }, 60_000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      refreshLiveStatus();
+      checkServerStatus();
+    }
+  });
 
   // Ненавязчивое появление блоков при скролле.
   const revealItems = $$(".reveal");
@@ -223,11 +229,18 @@
       const type = button.dataset.feed;
       if (!type) return;
       event.preventDefault();
+      const target = button.getAttribute("href");
+      if (target && location.hash !== target) history.pushState(null, "", target);
       openFeed(type);
     });
   });
 
-  openFeed("server");
+  function openFeedFromUrl() {
+    openFeed(location.hash === "#rules-feed" || location.hash === "#rules" ? "rules" : "server");
+  }
+  window.addEventListener("popstate", openFeedFromUrl);
+  window.addEventListener("hashchange", openFeedFromUrl);
+  openFeedFromUrl();
 
   $("#year").textContent = new Date().getFullYear();
 })();
@@ -251,6 +264,7 @@
   const intervalMs = 3000;
   const slideMs = 560;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const compactViewport = window.matchMedia('(max-width: 920px)');
 
   // Два изображения движутся одновременно внутри обрезающей рамки.
   const incoming = document.createElement('img');
@@ -263,7 +277,7 @@
     if (!images.length) return;
     const src = images[index];
     preview.src = src;
-    full.src = src;
+    if (!lightbox.hidden) full.src = src;
     preview.alt = full.alt = `Скриншот сервера Lumori ${index + 1}`;
     gallery.querySelector('.gallery-counter').textContent = `${index + 1} / ${images.length}`;
     lightbox.querySelector('.lightbox-counter').textContent = `${index + 1} / ${images.length}`;
@@ -299,7 +313,7 @@
   function stopAuto() { if (timer !== null) clearInterval(timer); timer = null; }
   function startAuto() {
     stopAuto();
-    if (!visible || document.hidden || !lightbox.hidden || images.length < 2) return;
+    if (!visible || document.hidden || !lightbox.hidden || images.length < 2 || compactViewport.matches) return;
     timer = window.setInterval(() => move(1), intervalMs);
   }
   function restartAuto() { startAuto(); }
@@ -311,7 +325,7 @@
       render();
       return;
     }
-    if (reducedMotion.matches) { index = target; render(); return; }
+    if (reducedMotion.matches || compactViewport.matches) { index = target; render(); return; }
     animating = true;
     const from = direction > 0 ? '100%' : '-100%';
     const to = direction > 0 ? '-100%' : '100%';
@@ -354,6 +368,7 @@
   });
   function close() {
     lightbox.hidden = true;
+    full.removeAttribute('src');
     document.body.style.overflow = previousOverflow;
     previousFocus?.focus();
     startAuto();
@@ -386,6 +401,8 @@
     observer.observe(gallery);
   } else { visible = true; startAuto(); }
   document.addEventListener('visibilitychange', () => { if (document.hidden) stopAuto(); else startAuto(); });
+  if (compactViewport.addEventListener) compactViewport.addEventListener('change', restartAuto);
+  else compactViewport.addListener(restartAuto);
   try {
     const response = await fetch('assets/gallery/index.json', { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -448,5 +465,6 @@
     });
   }
   renderServerAge();
-  window.setInterval(renderServerAge, 1000);
+  window.setInterval(() => { if (!document.hidden) renderServerAge(); }, 60_000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) renderServerAge(); });
 })();

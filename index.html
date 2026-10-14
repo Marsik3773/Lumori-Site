@@ -8,8 +8,9 @@
 <meta content="Lumori — ванильный Minecraft-сервер стримеров Dami_Aria и Marsik3773. Версия 26.3, выживание, сообщество и мини-игры." name="description"/>
 <title>Lumori — Minecraft Server</title>
 <link href="assets/site/lumori-planet.png" rel="icon"/>
-<link as="image" href="assets/site/lumori-hero.png" rel="preload"/>
-<link href="styles.css?v=lumori-particles-8" rel="stylesheet"/>
+<link as="image" href="assets/site/lumori-hero.png" media="(min-width: 921px)" rel="preload"/>
+<link as="image" href="assets/site/mobile/lumori-hero.webp" media="(max-width: 920px)" rel="preload"/>
+<link href="styles.css?v=lumori-mobile-1" rel="stylesheet"/>
 </head>
 <body>
 <div aria-hidden="true" class="ambient-bg"></div>
@@ -35,7 +36,7 @@
 <div aria-hidden="true" class="grain"></div>
 <header class="topbar" id="top">
 <a aria-label="Lumori — наверх" class="brand" href="#top">
-<img alt="Символ сервера Lumori" src="assets/site/lumori-planet.png"/>
+<picture><source media="(max-width: 920px)" srcset="assets/site/mobile/lumori-planet.webp" type="image/webp"/><img alt="Символ сервера Lumori" src="assets/site/lumori-planet.png"/></picture>
 <span class="brand-copy">
 <strong>LUMORI</strong>
 <small>Minecraft server</small>
@@ -43,10 +44,10 @@
 </a>
 <nav aria-label="Основная навигация" class="nav">
 <a data-feed="server" href="#server-feed">О сервере</a>
-<a data-feed="rules" href="#rules-feed">Правила сервера</a>
+<a data-feed="rules" href="#rules-feed"><span class="nav-label-full">Правила сервера</span><span class="nav-label-short">Правила</span></a>
 <a class="nav-shop" data-link="shop" href="https://lumori.millida.trade/" rel="noopener noreferrer" target="_blank">Магазин</a>
 </nav>
-<a class="primary-btn header-play-btn" href="https://discord.gg/dc2WhRhd3e" target="_blank" rel="noopener noreferrer">Начать играть с нами</a>
+<a class="primary-btn header-play-btn" href="https://discord.gg/dc2WhRhd3e" target="_blank" rel="noopener noreferrer"><span class="header-play-label-full">Начать играть с нами</span><span class="header-play-label-short">Играть</span></a>
 </header>
 <main>
 <div class="site-feed server-feed" id="server-feed">
@@ -77,7 +78,7 @@
 </div>
 <div aria-label="Символ Lumori" class="hero-mark reveal">
 <div class="planet-aura"></div>
-<img alt="Планета Lumori — официальный символ сервера" src="assets/site/lumori-planet.png"/>
+<picture><source media="(max-width: 920px)" srcset="assets/site/mobile/lumori-planet.webp" type="image/webp"/><img alt="Планета Lumori — официальный символ сервера" src="assets/site/lumori-planet.png"/></picture>
 <span class="orbit-label">наш уютный мир</span>
 </div>
 </section>
@@ -101,7 +102,7 @@
 <h2 id="about-title">Сервер, который не стоит на месте.</h2>
 <p>Lumori - это ванильный Minecraft сервер. Здесь можно строить, исследовать мир, знакомиться с людьми и просто играть в своём темпе.<br/><br/>Параллельно на сервере будут появляться и развиваться мини-игры - отдельные активности, к которым можно возвращаться между большими приключениями в основном мире.</p>
 </div>
-<div aria-label="Галерея скриншотов сервера" class="about-gallery"><div class="gallery-top"><span class="kicker">ГАЛЕРЕЯ</span><span aria-live="polite" class="gallery-counter">Загрузка...</span></div><div class="gallery-photo-wrap"><button aria-label="Открыть изображение на весь экран" class="gallery-open" title="Открыть на весь экран" type="button" disabled><img alt="" id="gallery-preview" loading="lazy"/><span aria-hidden="true" class="gallery-expand">⛶</span></button></div><div class="gallery-controls"><button aria-label="Предыдущий скриншот" class="gallery-arrow gallery-prev" type="button">←</button><div aria-label="Выбор изображения" class="gallery-dots"></div><button aria-label="Следующий скриншот" class="gallery-arrow gallery-next" type="button">→</button></div></div></div>
+<div aria-label="Галерея скриншотов сервера" class="about-gallery"><div class="gallery-top"><span class="kicker">ГАЛЕРЕЯ</span><span aria-live="polite" class="gallery-counter">Загрузка...</span></div><div class="gallery-photo-wrap"><button aria-label="Открыть изображение на весь экран" class="gallery-open" title="Открыть на весь экран" type="button" disabled><img alt="" decoding="async" id="gallery-preview" loading="lazy"/><span aria-hidden="true" class="gallery-expand">⛶</span></button></div><div class="gallery-controls"><button aria-label="Предыдущий скриншот" class="gallery-arrow gallery-prev" type="button">←</button><div aria-label="Выбор изображения" class="gallery-dots"></div><button aria-label="Следующий скриншот" class="gallery-arrow gallery-next" type="button">→</button></div></div></div>
 </section>
 <section class="server-age section-shell reveal" aria-labelledby="server-age-title">
   <div class="server-age-card">
@@ -591,12 +592,12 @@
 </div>
 </main>
 <footer class="footer section-shell">
-<a class="footer-brand" href="#top"><img alt="" src="assets/site/lumori-planet.png"/><span>LUMORI</span></a>
+<a class="footer-brand" href="#top"><picture><source media="(max-width: 920px)" srcset="assets/site/mobile/lumori-planet.webp" type="image/webp"/><img alt="" loading="lazy" src="assets/site/lumori-planet.png"/></picture><span>LUMORI</span></a>
 <div class="footer-info"><p>Vanilla Minecraft server · Dami_Aria × Marsik3773</p><p class="footer-disclaimer">Not affiliated with Mojang Studios or Microsoft.</p></div>
 <span>© <span id="year"></span> Lumori</span>
 </footer>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
 <div aria-label="Галерея Lumori" aria-modal="true" class="gallery-lightbox" hidden="" id="gallery-lightbox" role="dialog"><div class="lightbox-header"><span>Галерея Lumori</span><span aria-live="polite" class="lightbox-counter"></span><button aria-label="Закрыть галерею" class="lightbox-close" type="button">✕</button></div><button aria-label="Предыдущее изображение" class="lightbox-arrow lightbox-prev" type="button">←</button><img alt="" id="lightbox-image"/><button aria-label="Следующее изображение" class="lightbox-arrow lightbox-next" type="button">→</button></div><script src="config.js"></script>
-<script src="script.js"></script>
+<script src="script.js?v=lumori-mobile-1"></script>
 </body>
 </html>

@@ -312,7 +312,6 @@ button { font: inherit; }
 
 @media (max-width: 920px) {
   .topbar { top: 10px; }
-  .nav a:not(.nav-shop) { display: none; }
   .hero { min-height: auto; grid-template-columns: 1fr; }
   .hero-backdrop { background: linear-gradient(180deg, rgba(15,7,11,.84), rgba(15,7,11,.96)), url("assets/site/lumori-hero.png") center / cover no-repeat; }
   .hero-copy { padding: 58px 42px 14px; max-width: 760px; }
@@ -1155,4 +1154,113 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
   background: linear-gradient(135deg,#ffd2b7,#ff79a7);
   box-shadow: 0 0 10px rgba(255,130,170,.28);
   will-change: transform;
+}
+
+/* Compact navigation and static decoration for touch-sized screens. */
+.nav .nav-label-short,
+.header-play-btn span.header-play-label-short { display: none; }
+.hero-mark picture { position: relative; z-index: 2; display: block; width: min(480px, 90%); }
+.hero-mark picture img { width: 100%; max-width: 100%; }
+
+@media (max-width: 920px) {
+  html { scroll-behavior: auto; }
+  .topbar {
+    position: relative;
+    top: auto;
+    width: calc(100% - 20px);
+    min-height: 0;
+    margin-top: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 9px;
+    align-items: center;
+    justify-items: stretch;
+    border-radius: 18px;
+    background: rgba(22, 10, 16, .96);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  }
+  .topbar .brand { min-width: 0; gap: 8px; }
+  .topbar .brand img { width: 38px; height: 38px; flex: none; filter: none; }
+  .topbar .brand-copy strong { font-size: 14px; }
+  .topbar .brand-copy small { font-size: 10px; }
+  .topbar .header-play-btn {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  .header-play-btn span.header-play-label-full,
+  .nav .nav-label-full { display: none; }
+  .header-play-btn span.header-play-label-short,
+  .nav .nav-label-short { display: inline; }
+  .topbar .nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 13px;
+    justify-self: stretch;
+  }
+  .topbar .nav a,
+  .topbar .nav a:not(.nav-shop) {
+    display: flex;
+    min-width: 0;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 4px;
+    font-size: 12px;
+    line-height: 1.15;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .topbar .nav .nav-shop { margin-left: 0; }
+  .hero { margin-top: 12px; }
+  .hero-mark picture { width: min(368px, 78vw); }
+
+  .hero-backdrop {
+    background-image: linear-gradient(180deg, rgba(15,7,11,.84), rgba(15,7,11,.96)), url("assets/site/mobile/lumori-hero.webp");
+    filter: none;
+  }
+  .live-card.dami .live-photo { background-image: url("assets/site/mobile/dami-live.webp"); }
+  .live-card.marsik .live-photo { background-image: url("assets/site/mobile/marsik-live.webp"); }
+  .creators-visual { background-image: linear-gradient(180deg, rgba(11,7,10,.02), rgba(11,7,10,.24)), url("assets/site/mobile/streamers-night.webp"); }
+  .join-card { background-image: linear-gradient(180deg, rgba(25,10,17,.86), rgba(25,10,17,.97)), url("assets/site/mobile/dami-banner.webp"); }
+  .discord-card { background-image: linear-gradient(180deg, rgba(21,8,16,.84), rgba(21,8,16,.96)), url("assets/site/mobile/discord-banner.webp"); }
+
+  body > .lumori-aurora,
+  body > .lumori-sky,
+  body > .grain { display: none !important; }
+  body > .ambient-bg {
+    background: radial-gradient(circle at 48% 12%, #29131e, #0e070b 72%) !important;
+  }
+  body > .ambient-bg::before,
+  body > .ambient-bg::after { display: none !important; animation: none !important; filter: none !important; will-change: auto !important; }
+  .topbar, .tag, .status-pill, .ghost-btn, .toast { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .hero-mark img, .planet-aura { filter: none; }
+  .reveal, .reveal.visible { opacity: 1; transform: none; transition: none; }
+  .status-pill.online i { animation: none; }
+  .gallery-open #gallery-preview, .gallery-open .gallery-incoming,
+  .gallery-dots .gallery-active-indicator { will-change: auto; }
+}
+
+@media (max-width: 720px) {
+  .hero h1 { font-size: clamp(52px, 16.5vw, 82px); }
+}
+
+@media (max-width: 360px) {
+  .topbar .nav a, .topbar .nav a:not(.nav-shop) { font-size: 11px; }
+  .topbar .brand-copy small { display: none; }
+}
+
+@media (hover: none) {
+  .nav a:hover, .primary-btn:hover, .gallery-open:hover img { transform: none; }
 }
