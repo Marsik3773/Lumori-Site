@@ -1,3 +1,7 @@
+[build]
+  command = "node scripts/render-rules.mjs"
+  publish = "."
+
 [[headers]]
   for = "/*"
   [headers.values]

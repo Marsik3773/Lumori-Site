@@ -21,7 +21,8 @@ jobs:
       - name: Prepare site and gallery list
         run: |
           mkdir _site
-          cp index.html styles.css script.js config.js CNAME _site/
+          cp index.html styles.css script.js config.js rules.md CNAME _site/
+          node scripts/render-rules.mjs _site
           cp -R assets _site/
           cp -R ds _site/
           node scripts/generate-gallery-manifest.mjs _site/assets/gallery
