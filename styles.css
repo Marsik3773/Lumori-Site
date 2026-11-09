@@ -1200,7 +1200,7 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
     grid-column: 1 / -1;
     grid-row: 2;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
     max-width: none;
     overflow: visible;
