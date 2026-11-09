@@ -10,7 +10,7 @@
 <link href="assets/site/lumori-planet.png" rel="icon"/>
 <link as="image" href="assets/site/lumori-hero.png" media="(min-width: 921px)" rel="preload"/>
 <link as="image" href="assets/site/mobile/lumori-hero.webp" media="(max-width: 920px)" rel="preload"/>
-<link href="styles.css?v=lumori-docs-2" rel="stylesheet"/>
+<link href="styles.css?v=lumori-docs-3" rel="stylesheet"/>
 </head>
 <body>
 <div aria-hidden="true" class="ambient-bg"></div>
@@ -212,6 +212,7 @@
 <div class="docs-shell section-shell" id="guide">
 <aside aria-label="Разделы справочника" class="docs-sidebar">
 <div class="docs-sidebar-title">СПРАВОЧНИК LUMORI</div>
+<select aria-label="Выбрать тему справочника" class="docs-topic-select" id="docs-topic-select"></select>
 <div class="docs-sidebar-group"><strong>Возможности</strong>
 <a data-feed="guide" href="#guide-mods">Моды для игры</a>
 <a data-feed="guide" href="#guide-shops">Магазины</a>
@@ -231,35 +232,35 @@
 <a data-feed="rules" href="#rules-extra">Дополнительно</a></div>
 </aside>
 <div class="docs-main">
-<section aria-labelledby="guide-title" class="rules reveal" id="guide-article">
-<div class="section-heading"><div><span class="kicker">ГИД ПО LUMORI</span><h2 id="guide-title">Возможности сервера</h2><p>Как подготовиться к игре, открыть магазин и создать город.</p></div></div>
-<div class="rules-content guide-content">
-<h3 class="rule-item-title" id="guide-mods">Моды для игры</h3>
-<p class="rule-text">Для голосового общения установите Simple Voice Chat. Для просмотра экранов в игре установите Dream Displays. На страницах загрузки выберите сборки, подходящие вашей версии Minecraft и загрузчику модов.</p>
-<p class="guide-links"><a href="https://modrinth.com/mod/simple-voice-chat" target="_blank" rel="noopener noreferrer">Скачать Simple Voice Chat ↗</a><a href="https://modrinth.com/mod/dreamdisplays" target="_blank" rel="noopener noreferrer">Скачать Dream Displays ↗</a></p>
-<h3 class="rule-item-title" id="guide-shops">Свои магазины</h3>
-<p class="rule-text">Магазином может стать пустой одиночный сундук, бочка или шалкеровый ящик. Введите <code>/shop create &lt;название&gt;</code> и в течение минуты нажмите ПКМ на контейнер. Чтобы выставить пачку, возьмите её в основную руку и назначьте цену всей пачки командой <code>/shop price &lt;число&gt;</code>. Затем откройте свой магазин и перенесите пачку в пустой слот или добавьте её через Shift-клик. Предмет без назначенной цены магазин не примет.</p>
-<p class="rule-text">Минимальные цены смотрите через <code>/shop prices</code>. Через <code>/shop seller</code> доступны свои магазины и дополнительные места; <code>/shop address &lt;адрес&gt;</code> задаёт адрес магазина, на который вы смотрите, а <code>/shop withdraw</code> или Shift + ПКМ забирает выручку. Покупатель открывает магазин и покупает целую пачку кликом; Shift-клик отправляет покупку в инвентарь.</p>
-<p class="rule-text">По правилам Lumori обычному игроку доступны 3 бесплатных магазина и не более 10 всего. С Plus — 10 бесплатных и не более 50. Дополнительные магазины приобретаются за АРы; первый стоит 192 АР, каждый следующий на 64 АР дороже. Магазин должен быть доступен покупателям и не может стоять на чужой территории без разрешения. Продажа ниже минимальных цен и торговля за реальные деньги запрещены — подробности в разделе 5 правил.</p>
-<h3 class="rule-item-title" id="guide-towns">Города</h3>
-<p class="rule-text">Создать город может любой игрок: <code>/town create &lt;название&gt;</code>. Название должно содержать 3–24 символа. Чтобы зарегистрировать город и получить тег из 1–4 букв, соберите не менее 10 жителей вместе с мэром и введите <code>/town register &lt;тег&gt;</code>. Сейчас регистрация выполняется автоматически. Лимит жителей и заместителей не установлен.</p>
-<p class="rule-text">Для вступления мэр или заместитель отправляет <code>/town invite &lt;игрок&gt;</code>. Игрок должен быть онлайн на Survival; приглашение действует 5 минут. Для игроков доступны <code>/town list</code>, <code>/town info</code>, <code>/town invites</code>, <code>/town accept</code>, <code>/town deny</code> и <code>/town leave</code>. Сообщение, начинающееся с <code>?</code>, отправляется в городской чат.</p>
-<p class="rule-text">Мэр и руководство управляют городом через <code>/town kick</code>, <code>/town promote</code>, <code>/town demote</code>, <code>/town description</code>, <code>/town rename</code>, <code>/town flag</code>, <code>/town transfer</code> и <code>/town delete</code>. Полную справку покажет <code>/town help</code>. У города должны быть собственные правила в книге, доступной жителям; они не могут противоречить правилам Lumori.</p>
-<p class="rule-text">Города могут заключать унии по письменному соглашению глав. Войны возможны только по добровольному согласию сторон и после одобрения администрации. После выхода из города у жителя есть 3 календарных дня, чтобы забрать личные вещи и выселиться.</p>
-<h3 class="rule-item-title" id="guide-plus">Подписка Plus</h3>
-<p class="rule-text">Plus позволяет менять размер персонажа (<code>/size</code>), цвет ника (<code>/color</code>), сообщения входа и выхода (<code>/enter</code>, <code>/exit</code>), писать цветным текстом и использовать теги <code>item</code>, <code>online</code>, <code>random</code>, <code>cords</code>, <code>exp</code>, <code>ping</code> и <code>Plus</code>. Также доступны перенос игроков, мгновенный вход в портал Незера и использование блоков прямо из инвентаря.</p>
-<p class="rule-text">На Survival можно настроить дальность до 16 чанков командой <code>/chunks</code>. При бездействии игрока с Plus не отправляет в Lobby, но время игры за AFK не начисляется. При первой выдаче Plus лимит товаров Stallora увеличивается на 7. В <code>/plus menu</code> можно отключать отдельные возможности и управлять меткой на онлайн-карте; Vanish скрывает её всегда. <code>/plus</code> показывает срок подписки и ссылку на магазин, <code>/plus help</code> — подсказку.</p>
-<p class="rule-text">По правилам Plus даёт 10 бесплатных магазинов с общим пределом 50 и один дополнительный аккаунт с суффиксом <code>_tw</code>. Подписка должна быть активна на обоих аккаунтах. Условия покупки — в <a href="https://lumori.millida.trade/" target="_blank" rel="noopener noreferrer">официальном магазине</a>.</p>
-<h3 class="rule-item-title" id="guide-emoji">Эмодзи и кейсы</h3>
-<p class="rule-text">У каждого игрока по умолчанию есть эмодзи ●. Команда <code>/emoji</code> показывает коллекцию, <code>/emoji cases</code> — ключи, а <code>/emoji set &lt;символ&gt;</code> выбирает доступный эмодзи. Кейсы открываются у специальных сундуков в Lobby. Бесплатный ключ можно получить за голоса на сайтах, список которых показывает меню кейсов.</p>
-<p class="rule-text">Золотой кейс: 🌼 🌷 🏶 🍁 🌰 🍒 🍕 🍢 🍭 🧀. Алмазный: ♪ ♫ ☀ ☁ ☄ ★ 🌊 🌧 ☽. Незеритовый: ⛏ 🪓 🪏 ⚒ ⚓ ⚔ 🎣 🗡 🔱 ✂ 🛡 🛠 ⚗.</p>
-<h3 class="rule-item-title" id="guide-account">Перепривязка аккаунта</h3>
-<p class="rule-text"><strong>Смена Minecraft-ника:</strong> зайдите под новым свободным ником, получите шестизначный код и отправьте его в Discord-канал <code>#отправь-код-сюда</code> со своего уже привязанного Discord-аккаунта. Старый ник должен быть офлайн. Привязка и игровые данные переносятся на новый ник; между такими сменами действует пауза 7 дней.</p>
-<p class="rule-text"><strong>Смена Discord:</strong> после подтверждённого входа в Lobby введите <code>/lumoriauth discord</code>. Отправьте показанный восьмизначный код в тот же канал уже с нового Discord-аккаунта. После смены войдите в Minecraft заново и подтвердите вход через новый Discord.</p>
-<h3 class="rule-item-title" id="guide-light">Блок света</h3>
-<p class="rule-text">Подготовлен рецепт одного блока света: в верхнем ряду пыль светокамня посередине, в нижнем — кварц, факел, кварц. Наличие этого рецепта на работающем сервере пока не подтверждено; если крафт не срабатывает, сообщите администрации.</p>
-<p class="guide-links"><a href="https://discord.gg/dc2WhRhd3e" target="_blank" rel="noopener noreferrer">Задать вопрос в Discord ↗</a><a href="#rules" data-feed="rules">Читать правила сервера →</a></p>
-</div>
+<section aria-label="Возможности сервера" class="rules reveal" id="guide-article">
+<article class="docs-panel" id="guide-mods"><span class="kicker">ВОЗМОЖНОСТИ</span><h2>Моды для игры</h2><p class="docs-lead">Для голосового общения и экранов в игре установите два мода.</p>
+<div class="docs-card"><h3>Simple Voice Chat</h3><p>Голосовое общение с игроками поблизости.</p><a href="https://modrinth.com/mod/simple-voice-chat" target="_blank" rel="noopener noreferrer">Страница загрузки ↗</a></div>
+<div class="docs-card"><h3>Dream Displays</h3><p>Просмотр игровых экранов.</p><a href="https://modrinth.com/mod/dreamdisplays" target="_blank" rel="noopener noreferrer">Страница загрузки ↗</a></div>
+<p class="docs-note">На странице каждого мода выберите файл для своей версии Minecraft и загрузчика.</p></article>
+<article class="docs-panel" id="guide-shops"><span class="kicker">ВОЗМОЖНОСТИ</span><h2>Свои магазины</h2><p class="docs-lead">Продавайте предметы другим игрокам через сундук, бочку или шалкеровый ящик.</p>
+<div class="docs-card"><h3>Как открыть магазин</h3><ol><li>Поставьте пустой одиночный контейнер.</li><li>Введите <code>/shop create &lt;название&gt;</code>.</li><li>В течение минуты нажмите ПКМ на контейнер.</li></ol></div>
+<div class="docs-card"><h3>Как выставить товар</h3><ol><li>Возьмите пачку предметов в основную руку.</li><li>Укажите цену <strong>за всю пачку</strong>: <code>/shop price &lt;число&gt;</code>.</li><li>Откройте свой магазин и положите пачку в свободный слот или используйте Shift-клик.</li></ol><p>Без назначенной цены магазин товар не примет.</p></div>
+<div class="docs-card"><h3>Полезные команды</h3><ul><li><code>/shop prices</code> — минимальные цены.</li><li><code>/shop seller</code> — свои магазины и дополнительные места.</li><li><code>/shop address &lt;адрес&gt;</code> — адрес магазина, на который смотрите.</li><li><code>/shop withdraw</code> или Shift + ПКМ — забрать выручку.</li></ul></div>
+<div class="docs-card"><h3>Лимиты и правила</h3><ul><li>Без Plus: 3 бесплатных магазина, максимум 10.</li><li>С Plus: 10 бесплатных магазинов, максимум 50.</li><li>Дополнительный магазин стоит от 192 АР; каждый следующий на 64 АР дороже.</li><li>Магазин должен быть доступен покупателям. На чужой территории нужно разрешение владельца.</li><li>Торговля ниже минимальной цены и за реальные деньги запрещена.</li></ul><a href="#rules-5" data-feed="rules">Все правила торговли →</a></div></article>
+<article class="docs-panel" id="guide-towns"><span class="kicker">ВОЗМОЖНОСТИ</span><h2>Города</h2><p class="docs-lead">Объединяйтесь с игроками, управляйте городом и общайтесь в отдельном чате.</p>
+<div class="docs-card"><h3>Создание и регистрация</h3><ol><li>Введите <code>/town create &lt;название&gt;</code>. Название: от 3 до 24 символов.</li><li>Соберите 10 участников вместе с мэром.</li><li>Введите <code>/town register &lt;тег&gt;</code>. Тег: от 1 до 4 букв; регистрация сейчас автоматическая.</li></ol><p>Лимит жителей и заместителей не установлен.</p></div>
+<div class="docs-card"><h3>Приглашения и общение</h3><ul><li><code>/town invite &lt;игрок&gt;</code> — пригласить игрока, который сейчас на Survival. Приглашение действует 5 минут.</li><li><code>/town invites</code>, <code>/town accept</code>, <code>/town deny</code> — посмотреть, принять или отклонить приглашение.</li><li>Начните сообщение с <code>?</code>, чтобы написать в городской чат.</li></ul></div>
+<div class="docs-card"><h3>Управление</h3><ul><li><code>/town list</code>, <code>/town info</code>, <code>/town leave</code> — список, сведения и выход.</li><li><code>/town kick</code>, <code>/town promote</code>, <code>/town demote</code> — управление жителями.</li><li><code>/town description</code>, <code>/town rename</code>, <code>/town flag</code> — оформление города.</li><li><code>/town transfer</code>, <code>/town delete</code> — передача и удаление города.</li></ul><p>Полный список команд: <code>/town help</code>.</p></div>
+<p class="docs-note">Городу нужны свои правила в книге. Унии заключаются письменным соглашением глав; войны возможны только с согласия сторон и одобрения администрации. После выхода из города есть 3 дня, чтобы забрать вещи.</p><a href="#rules-6" data-feed="rules">Правила городов →</a></article>
+<article class="docs-panel" id="guide-plus"><span class="kicker">ВОЗМОЖНОСТИ</span><h2>Подписка Plus</h2><p class="docs-lead">Дополнительные настройки персонажа и удобства для игры.</p>
+<div class="docs-card"><h3>Внешний вид и чат</h3><ul><li><code>/size</code> — изменить размер персонажа.</li><li><code>/color</code> — изменить цвет ника.</li><li><code>/enter</code> и <code>/exit</code> — настроить сообщения входа и выхода.</li><li>Цветной чат и теги <code>item</code>, <code>online</code>, <code>random</code>, <code>cords</code>, <code>exp</code>, <code>ping</code>, <code>Plus</code>.</li></ul></div>
+<div class="docs-card"><h3>Удобства в игре</h3><ul><li>Перенос игроков, мгновенный вход в портал Незера и использование блоков прямо из инвентаря.</li><li><code>/chunks</code> — настроить дальность на Survival до 16 чанков.</li><li>При AFK вас не переносит в Lobby, но игровое время не начисляется.</li></ul></div>
+<div class="docs-card"><h3>Магазины и аккаунт</h3><ul><li>10 бесплатных магазинов, максимум 50.</li><li>При первой выдаче Plus лимит товаров Stallora увеличивается на 7.</li><li>Разрешён один дополнительный аккаунт с суффиксом <code>_tw</code>; Plus должен быть активен на обоих.</li></ul></div>
+<div class="docs-card"><h3>Управление подпиской</h3><ul><li><code>/plus menu</code> — выключать отдельные возможности и управлять своей меткой на карте. Vanish скрывает её всегда.</li><li><code>/plus</code> — срок подписки и ссылка на магазин.</li><li><code>/plus help</code> — подсказка по командам.</li></ul></div><a href="https://lumori.millida.trade/" target="_blank" rel="noopener noreferrer">Условия покупки в магазине ↗</a></article>
+<article class="docs-panel" id="guide-emoji"><span class="kicker">ВОЗМОЖНОСТИ</span><h2>Эмодзи и кейсы</h2><p class="docs-lead">Собирайте эмодзи и выбирайте символ для своего профиля.</p>
+<div class="docs-card"><h3>Как пользоваться</h3><ul><li><code>/emoji</code> — посмотреть свою коллекцию.</li><li><code>/emoji set &lt;символ&gt;</code> — выбрать доступный эмодзи.</li><li><code>/emoji cases</code> — посмотреть ключи от кейсов.</li></ul><p>Эмодзи ● есть у каждого игрока. Кейсы открываются у специальных сундуков в Lobby.</p></div>
+<div class="docs-card"><h3>Где голосовать за ключ</h3><p>Бесплатный ключ можно получить за голосование за сервер:</p><ul class="docs-link-list"><li><a href="https://minecraftrating.ru/vote/402561/" target="_blank" rel="noopener noreferrer">MinecraftRating ↗</a></li><li><a href="https://hotmc.ru/vote-293718" target="_blank" rel="noopener noreferrer">HotMC ↗</a></li><li><a href="https://top-minecrafter.com/server/lumori/" target="_blank" rel="noopener noreferrer">Top-Minecrafter ↗</a></li></ul></div></article>
+<article class="docs-panel" id="guide-account"><span class="kicker">ВОЗМОЖНОСТИ</span><h2>Перепривязка аккаунта</h2><p class="docs-lead">Смена Minecraft-ника и Discord-аккаунта выполняется через код подтверждения.</p>
+<div class="docs-card"><h3>Сменить Minecraft-ник</h3><ol><li>Убедитесь, что прежний ник офлайн.</li><li>Войдите под новым свободным ником и получите шестизначный код.</li><li>Отправьте код в канал <code>#отправь-код-сюда</code> со своего уже привязанного Discord-аккаунта.</li></ol><p>Игровые данные сохраняются. Между сменами ника действует пауза 7 дней.</p></div>
+<div class="docs-card"><h3>Сменить Discord</h3><ol><li>Подтвердите вход в Lobby и введите <code>/lumoriauth discord</code>.</li><li>Отправьте показанный восьмизначный код в тот же канал с <strong>нового</strong> Discord-аккаунта.</li><li>Войдите в Minecraft заново и подтвердите вход через новый Discord.</li></ol></div><a href="https://discord.gg/dc2WhRhd3e" target="_blank" rel="noopener noreferrer">Открыть Discord ↗</a></article>
+<article class="docs-panel" id="guide-light"><span class="kicker">ВОЗМОЖНОСТИ</span><h2>Блок света</h2><p class="docs-lead">Схема крафта блока света.</p>
+<figure class="docs-recipe"><img src="assets/site/light-block-recipe.png" width="249" height="135" alt="Рецепт блока света: пыль светокамня в верхней центральной ячейке, кварц по краям среднего ряда, факел в центре" loading="lazy"/><figcaption>Пыль светокамня сверху; кварц, факел, кварц — в среднем ряду.</figcaption></figure>
+<p class="docs-note">Наличие рецепта на работающем сервере пока не подтверждено. Если крафт не срабатывает, сообщите администрации в <a href="https://discord.gg/dc2WhRhd3e" target="_blank" rel="noopener noreferrer">Discord</a>.</p></article>
 </section>
 <section aria-labelledby="rules-title" class="rules reveal" id="rules">
 <div class="section-heading">
@@ -667,6 +668,6 @@
 </footer>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
 <div aria-label="Галерея Lumori" aria-modal="true" class="gallery-lightbox" hidden="" id="gallery-lightbox" role="dialog"><div class="lightbox-header"><span>Галерея Lumori</span><span aria-live="polite" class="lightbox-counter"></span><button aria-label="Закрыть галерею" class="lightbox-close" type="button">✕</button></div><button aria-label="Предыдущее изображение" class="lightbox-arrow lightbox-prev" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5 8 12 15 19"/></svg></button><img alt="" id="lightbox-image"/><button aria-label="Следующее изображение" class="lightbox-arrow lightbox-next" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5 16 12 9 19"/></svg></button></div><script src="config.js"></script>
-<script src="script.js?v=lumori-docs-2"></script>
+<script src="script.js?v=lumori-docs-3"></script>
 </body>
 </html>

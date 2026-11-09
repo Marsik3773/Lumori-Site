@@ -204,9 +204,72 @@
   const serverFeeds = $$(".server-feed");
   const rulesFeed = $("#rules-feed");
   const feedButtons = $$('[data-feed]');
+  const guidePanels = $$("#guide-article .docs-panel");
+  const rulesContent = $("#rules-content");
+  const topicSelect = $("#docs-topic-select");
+
+  // Keep rules.md readable without JavaScript; with JavaScript, show one chapter
+  // at a time and let readers expand only the individual rules they need.
+  if (rulesContent) {
+    const nodes = Array.from(rulesContent.childNodes);
+    const panels = [];
+    const introduction = [];
+    let panel = null;
+    let detail = null;
+    nodes.forEach((node) => {
+      if (node.nodeType === 1 && node.matches("h2.rules-main-title")) {
+        panel = document.createElement("article");
+        panel.className = "docs-panel docs-rule-panel";
+        panel.id = node.id;
+        node.removeAttribute("id");
+        panels.push(panel);
+        panel.append(node);
+        detail = null;
+      } else if (!panel) {
+        introduction.push(node);
+      } else if (node.nodeType === 1 && node.matches("h3.rule-item-title")) {
+        detail = document.createElement("details");
+        detail.className = "docs-rule-detail";
+        const summary = document.createElement("summary");
+        summary.textContent = node.textContent;
+        detail.append(summary);
+        panel.append(detail);
+      } else if (node.nodeType === 1 && node.matches("hr")) {
+        node.remove();
+      } else {
+        (detail || panel).append(node);
+      }
+    });
+    if (panels.length) {
+      const intro = document.createElement("div");
+      intro.className = "docs-introduction";
+      intro.append(...introduction);
+      panels[0].insertBefore(intro, panels[0].firstChild.nextSibling);
+      rulesContent.replaceChildren(...panels);
+    }
+  }
+  const rulePanels = $$("#rules-content .docs-rule-panel");
+
+  if (topicSelect) {
+    $$(".docs-sidebar-group").forEach((group) => {
+      const optionGroup = document.createElement("optgroup");
+      optionGroup.label = group.querySelector("strong")?.textContent || "Разделы";
+      group.querySelectorAll("a").forEach((link) => {
+        const option = document.createElement("option");
+        option.value = link.getAttribute("href");
+        option.textContent = link.textContent;
+        optionGroup.append(option);
+      });
+      topicSelect.append(optionGroup);
+    });
+    topicSelect.addEventListener("change", () => { location.hash = topicSelect.value; });
+  }
 
   function openFeed(type, instant = false) {
     const showServer = type === "server";
+    const selectedId = location.hash.slice(1);
+    const guideId = selectedId.startsWith("guide-") ? selectedId : "guide-mods";
+    const rulesId = selectedId.startsWith("rules-") ? selectedId : "rules-1";
     serverFeeds.forEach((feed) => {
       feed.style.display = showServer ? "" : "none";
     });
@@ -216,18 +279,28 @@
         rulesFeed.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
       }
     }
+    const guide = $("#guide-article");
+    const rules = $("#rules");
+    if (guide) guide.hidden = type !== "guide";
+    if (rules) rules.hidden = type !== "rules";
+    guidePanels.forEach((panel) => { panel.hidden = panel.id !== guideId; });
+    rulePanels.forEach((panel) => { panel.hidden = panel.id !== rulesId; });
 
     if (showServer) {
-      window.scrollTo({ top: 0, behavior: instant ? "auto" : "smooth" });
+      window.scrollTo({ top: 0, behavior: instant ? "instant" : "smooth" });
     } else {
-      const requested = location.hash && $(location.hash);
-      const target = requested && rulesFeed?.contains(requested)
-        ? requested : type === "guide" ? $("#guide") : $("#rules");
-      target?.scrollIntoView({ behavior: instant ? "auto" : "smooth", block: "start" });
+      const target = window.matchMedia("(max-width: 800px)").matches
+        ? $(".docs-sidebar")
+        : document.getElementById(type === "guide" ? guideId : rulesId);
+      target?.scrollIntoView({ behavior: instant ? "instant" : "smooth", block: "start" });
     }
     $$(".docs-sidebar a").forEach((link) => {
-      link.classList.toggle("is-active", link.getAttribute("href") === location.hash);
+      const active = link.getAttribute("href") === `#${type === "guide" ? guideId : rulesId}` && !showServer;
+      link.classList.toggle("is-active", active);
+      if (active) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
     });
+    if (topicSelect && !showServer) topicSelect.value = `#${type === "guide" ? guideId : rulesId}`;
   }
 
   feedButtons.forEach((button) => {
@@ -246,6 +319,7 @@
   }
   window.addEventListener("popstate", openFeedFromUrl);
   window.addEventListener("hashchange", openFeedFromUrl);
+  window.addEventListener("load", openFeedFromUrl, { once: true });
   openFeedFromUrl();
 
   $("#year").textContent = new Date().getFullYear();
@@ -484,70 +558,4 @@
   renderServerAge();
   window.setInterval(() => { if (!document.hidden) renderServerAge(); }, 60_000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) renderServerAge(); });
-})();
-
-// Also refresh from Markdown when Pages publishes the branch through Jekyll.
-// Keep the generated HTML if the request fails or JavaScript is unavailable.
-(async () => {
-  const container = document.querySelector('#rules-content');
-  if (!container) return;
-  try {
-    const response = await fetch('rules.md', { cache: 'no-store' });
-    if (!response.ok) return;
-    const markdown = await response.text();
-    if (!/^# Правила сервера Lumori\s*$/m.test(markdown)) return;
-function escapeHtml(text) {
-  return text.replace(/[&<>"']/g, (char) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  })[char]);
-}
-
-// Small, deliberately limited Markdown format: headings, paragraphs, bullet
-// lists, bold and inline code. Raw HTML is always escaped.
-function inline(text) {
-  return text.split(/(`[^`]+`)/g).map((part) => {
-    if (part.startsWith('`') && part.endsWith('`')) {
-      return `<code>${escapeHtml(part.slice(1, -1))}</code>`;
-    }
-    return escapeHtml(part).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-  }).join('');
-}
-
-const output = [];
-let paragraph = [];
-let list = [];
-function flush() {
-  if (paragraph.length) output.push(`<p class="rule-text">${inline(paragraph.join(' '))}</p>`);
-  if (list.length) output.push(`<ul class="rule-list">${list.map((item) => `<li>${inline(item)}</li>`).join('')}</ul>`);
-  paragraph = [];
-  list = [];
-}
-
-for (const line of markdown.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n').split('\n')) {
-  const heading = /^(#{1,3})\s+(.+)$/.exec(line);
-  const bullet = /^[-*]\s+(.+)$/.exec(line);
-  if (heading) {
-    flush();
-    if (heading[1].length === 1) continue; // Page already has its own title.
-    const isSection = heading[1].length === 2;
-    const tag = isSection ? 'h2' : 'h3';
-    if (!isSection) output.push('<hr/>');
-    const ruleNumber = isSection && /^([1-7])\./.exec(heading[2]);
-    const id = isSection ? ` id="${ruleNumber ? `rules-${ruleNumber[1]}` : 'rules-extra'}"` : '';
-    output.push(`<${tag}${id} class="${isSection ? 'rules-main-title' : 'rule-item-title'}">${inline(heading[2])}</${tag}>`);
-  } else if (bullet) {
-    if (paragraph.length) flush();
-    list.push(bullet[1]);
-  } else if (!line.trim()) {
-    flush();
-  } else {
-    if (list.length) flush();
-    paragraph.push(line.trim());
-  }
-}
-flush();
-    if (output.length) container.innerHTML = output.join('\n');
-  } catch {
-    // The complete rules already embedded in index.html remain readable.
-  }
 })();

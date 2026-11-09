@@ -1356,3 +1356,46 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
   .docs-sidebar { padding: 16px 8px; }
   .docs-sidebar-group a { padding: 8px; font-size: 12px; }
 }
+
+/* Each documentation topic is a separate, readable view. */
+.docs-topic-select { display: none; }
+.docs-main .rules[hidden], .docs-panel[hidden] { display: none !important; }
+.docs-main .rules + .rules:not([hidden]) { margin-top: 92px; }
+.docs-panel { max-width: 900px; }
+#guide-article .docs-panel { padding: clamp(22px, 4vw, 42px); border: 1px solid var(--line); border-radius: var(--radius-xl); background: rgba(27, 13, 20, .82); box-shadow: var(--shadow); }
+.docs-panel h2 { margin: 10px 0 12px; color: var(--text); font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -.035em; }
+.docs-lead { max-width: 65ch; margin: 0 0 28px; color: #e3cdd3; font-size: 17px; line-height: 1.55; }
+.docs-card { max-width: 72ch; margin: 14px 0; padding: 19px 21px; border: 1px solid rgba(255, 194, 182, .14); border-radius: 17px; background: rgba(255, 255, 255, .035); }
+.docs-card h3 { margin: 0 0 11px; font-size: 19px; color: #fff4ef; }
+.docs-card p, .docs-card li, .docs-note, .docs-recipe figcaption { color: #dfcbd0; line-height: 1.58; }
+.docs-card p { margin: 10px 0 0; }
+.docs-card ul, .docs-card ol { margin: 10px 0 0; padding-left: 22px; }
+.docs-card li + li { margin-top: 9px; }
+.docs-card a, .docs-panel > a, .docs-note a { color: #ffc8ba; text-underline-offset: 3px; }
+.docs-card code, .docs-panel code { color: #ffe0d2; overflow-wrap: anywhere; }
+.docs-note { max-width: 70ch; margin: 20px 0; padding: 15px 18px; border-left: 3px solid #f5a6ae; border-radius: 0 12px 12px 0; background: rgba(255, 194, 182, .07); }
+.docs-link-list { list-style: none; padding-left: 0 !important; }
+.docs-link-list a { display: inline-block; padding: 3px 0; font-weight: 700; }
+.docs-recipe { margin: 24px 0; padding: 20px; width: fit-content; max-width: 100%; border: 1px solid var(--line); border-radius: 17px; background: #21191e; }
+.docs-recipe img { display: block; width: min(100%, 498px); height: auto; image-rendering: pixelated; }
+.docs-recipe figcaption { max-width: 45ch; margin-top: 12px; font-size: 14px; }
+.docs-rule-panel { max-width: 72ch; }
+.docs-rule-panel .rules-main-title { margin: 0 0 20px; font-size: clamp(27px, 3vw, 37px); }
+.docs-introduction { margin: 0 0 18px; }
+.docs-rule-detail { margin: 10px 0; border: 1px solid rgba(255, 194, 182, .15); border-radius: 13px; background: rgba(255, 255, 255, .025); }
+.docs-rule-detail summary { padding: 16px 18px; color: #fff2ee; font-weight: 750; cursor: pointer; line-height: 1.4; }
+.docs-rule-detail summary:hover { background: rgba(255, 194, 182, .07); }
+.docs-rule-detail[open] { padding-bottom: 13px; }
+.docs-rule-detail > :not(summary) { margin-left: 18px; margin-right: 18px; }
+.docs-rule-detail .rule-text, .docs-rule-detail .rule-list { max-width: 65ch; }
+@media (max-width: 800px) {
+  .docs-sidebar { display: block; max-height: none; margin-top: 18px; }
+  .docs-sidebar-title { padding-bottom: 8px; }
+  .docs-sidebar-group { display: none; }
+  .docs-topic-select { display: block; width: 100%; min-height: 46px; padding: 0 12px; border: 1px solid rgba(255, 194, 182, .25); border-radius: 11px; background: #27171e; color: #fff4ef; font: inherit; }
+  .docs-main .rules:first-child, .docs-main .rules + .rules:not([hidden]) { margin-top: 0; }
+  #guide-article .docs-panel { padding: 22px 18px; }
+  .rules-content { padding: 22px 18px; }
+  .docs-card { padding: 16px; }
+  .docs-rule-detail summary { padding: 14px; }
+}
