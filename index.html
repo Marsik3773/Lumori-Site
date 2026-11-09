@@ -10,7 +10,7 @@
 <link href="assets/site/lumori-planet.png" rel="icon"/>
 <link as="image" href="assets/site/lumori-hero.png" media="(min-width: 921px)" rel="preload"/>
 <link as="image" href="assets/site/mobile/lumori-hero.webp" media="(max-width: 920px)" rel="preload"/>
-<link href="styles.css?v=lumori-guide-1" rel="stylesheet"/>
+<link href="styles.css?v=lumori-docs-2" rel="stylesheet"/>
 </head>
 <body>
 <div aria-hidden="true" class="ambient-bg"></div>
@@ -209,37 +209,59 @@
 </section>
 </div>
 <div class="site-feed rules-feed" id="rules-feed" style="display:none;">
-<section aria-labelledby="guide-title" class="rules section-shell reveal" id="guide">
+<div class="docs-shell section-shell" id="guide">
+<aside aria-label="Разделы справочника" class="docs-sidebar">
+<div class="docs-sidebar-title">СПРАВОЧНИК LUMORI</div>
+<div class="docs-sidebar-group"><strong>Возможности</strong>
+<a data-feed="guide" href="#guide-mods">Моды для игры</a>
+<a data-feed="guide" href="#guide-shops">Магазины</a>
+<a data-feed="guide" href="#guide-towns">Города</a>
+<a data-feed="guide" href="#guide-plus">Подписка Plus</a>
+<a data-feed="guide" href="#guide-emoji">Эмодзи и кейсы</a>
+<a data-feed="guide" href="#guide-account">Аккаунт</a>
+<a data-feed="guide" href="#guide-light">Блок света</a></div>
+<div class="docs-sidebar-group"><strong>Правила</strong>
+<a data-feed="rules" href="#rules-1">Общие положения</a>
+<a data-feed="rules" href="#rules-2">Чат и общение</a>
+<a data-feed="rules" href="#rules-3">Игровой процесс</a>
+<a data-feed="rules" href="#rules-4">Территории</a>
+<a data-feed="rules" href="#rules-5">Торговля</a>
+<a data-feed="rules" href="#rules-6">Города</a>
+<a data-feed="rules" href="#rules-7">Аккаунты</a>
+<a data-feed="rules" href="#rules-extra">Дополнительно</a></div>
+</aside>
+<div class="docs-main">
+<section aria-labelledby="guide-title" class="rules reveal" id="guide-article">
 <div class="section-heading"><div><span class="kicker">ГИД ПО LUMORI</span><h2 id="guide-title">Возможности сервера</h2><p>Как подготовиться к игре, открыть магазин и создать город.</p></div></div>
 <div class="rules-content guide-content">
-<h3 class="rule-item-title">Моды для игры</h3>
+<h3 class="rule-item-title" id="guide-mods">Моды для игры</h3>
 <p class="rule-text">Для голосового общения установите Simple Voice Chat. Для просмотра экранов в игре установите Dream Displays. На страницах загрузки выберите сборки, подходящие вашей версии Minecraft и загрузчику модов.</p>
 <p class="guide-links"><a href="https://modrinth.com/mod/simple-voice-chat" target="_blank" rel="noopener noreferrer">Скачать Simple Voice Chat ↗</a><a href="https://modrinth.com/mod/dreamdisplays" target="_blank" rel="noopener noreferrer">Скачать Dream Displays ↗</a></p>
-<h3 class="rule-item-title">Свои магазины</h3>
+<h3 class="rule-item-title" id="guide-shops">Свои магазины</h3>
 <p class="rule-text">Магазином может стать пустой одиночный сундук, бочка или шалкеровый ящик. Введите <code>/shop create &lt;название&gt;</code> и в течение минуты нажмите ПКМ на контейнер. Чтобы выставить пачку, возьмите её в основную руку и назначьте цену всей пачки командой <code>/shop price &lt;число&gt;</code>. Затем откройте свой магазин и перенесите пачку в пустой слот или добавьте её через Shift-клик. Предмет без назначенной цены магазин не примет.</p>
 <p class="rule-text">Минимальные цены смотрите через <code>/shop prices</code>. Через <code>/shop seller</code> доступны свои магазины и дополнительные места; <code>/shop address &lt;адрес&gt;</code> задаёт адрес магазина, на который вы смотрите, а <code>/shop withdraw</code> или Shift + ПКМ забирает выручку. Покупатель открывает магазин и покупает целую пачку кликом; Shift-клик отправляет покупку в инвентарь.</p>
 <p class="rule-text">По правилам Lumori обычному игроку доступны 3 бесплатных магазина и не более 10 всего. С Plus — 10 бесплатных и не более 50. Дополнительные магазины приобретаются за АРы; первый стоит 192 АР, каждый следующий на 64 АР дороже. Магазин должен быть доступен покупателям и не может стоять на чужой территории без разрешения. Продажа ниже минимальных цен и торговля за реальные деньги запрещены — подробности в разделе 5 правил.</p>
-<h3 class="rule-item-title">Города</h3>
+<h3 class="rule-item-title" id="guide-towns">Города</h3>
 <p class="rule-text">Создать город может любой игрок: <code>/town create &lt;название&gt;</code>. Название должно содержать 3–24 символа. Чтобы зарегистрировать город и получить тег из 1–4 букв, соберите не менее 10 жителей вместе с мэром и введите <code>/town register &lt;тег&gt;</code>. Сейчас регистрация выполняется автоматически. Лимит жителей и заместителей не установлен.</p>
 <p class="rule-text">Для вступления мэр или заместитель отправляет <code>/town invite &lt;игрок&gt;</code>. Игрок должен быть онлайн на Survival; приглашение действует 5 минут. Для игроков доступны <code>/town list</code>, <code>/town info</code>, <code>/town invites</code>, <code>/town accept</code>, <code>/town deny</code> и <code>/town leave</code>. Сообщение, начинающееся с <code>?</code>, отправляется в городской чат.</p>
 <p class="rule-text">Мэр и руководство управляют городом через <code>/town kick</code>, <code>/town promote</code>, <code>/town demote</code>, <code>/town description</code>, <code>/town rename</code>, <code>/town flag</code>, <code>/town transfer</code> и <code>/town delete</code>. Полную справку покажет <code>/town help</code>. У города должны быть собственные правила в книге, доступной жителям; они не могут противоречить правилам Lumori.</p>
 <p class="rule-text">Города могут заключать унии по письменному соглашению глав. Войны возможны только по добровольному согласию сторон и после одобрения администрации. После выхода из города у жителя есть 3 календарных дня, чтобы забрать личные вещи и выселиться.</p>
-<h3 class="rule-item-title">Подписка Plus</h3>
+<h3 class="rule-item-title" id="guide-plus">Подписка Plus</h3>
 <p class="rule-text">Plus позволяет менять размер персонажа (<code>/size</code>), цвет ника (<code>/color</code>), сообщения входа и выхода (<code>/enter</code>, <code>/exit</code>), писать цветным текстом и использовать теги <code>item</code>, <code>online</code>, <code>random</code>, <code>cords</code>, <code>exp</code>, <code>ping</code> и <code>Plus</code>. Также доступны перенос игроков, мгновенный вход в портал Незера и использование блоков прямо из инвентаря.</p>
 <p class="rule-text">На Survival можно настроить дальность до 16 чанков командой <code>/chunks</code>. При бездействии игрока с Plus не отправляет в Lobby, но время игры за AFK не начисляется. При первой выдаче Plus лимит товаров Stallora увеличивается на 7. В <code>/plus menu</code> можно отключать отдельные возможности и управлять меткой на онлайн-карте; Vanish скрывает её всегда. <code>/plus</code> показывает срок подписки и ссылку на магазин, <code>/plus help</code> — подсказку.</p>
 <p class="rule-text">По правилам Plus даёт 10 бесплатных магазинов с общим пределом 50 и один дополнительный аккаунт с суффиксом <code>_tw</code>. Подписка должна быть активна на обоих аккаунтах. Условия покупки — в <a href="https://lumori.millida.trade/" target="_blank" rel="noopener noreferrer">официальном магазине</a>.</p>
-<h3 class="rule-item-title">Эмодзи и кейсы</h3>
+<h3 class="rule-item-title" id="guide-emoji">Эмодзи и кейсы</h3>
 <p class="rule-text">У каждого игрока по умолчанию есть эмодзи ●. Команда <code>/emoji</code> показывает коллекцию, <code>/emoji cases</code> — ключи, а <code>/emoji set &lt;символ&gt;</code> выбирает доступный эмодзи. Кейсы открываются у специальных сундуков в Lobby. Бесплатный ключ можно получить за голоса на сайтах, список которых показывает меню кейсов.</p>
 <p class="rule-text">Золотой кейс: 🌼 🌷 🏶 🍁 🌰 🍒 🍕 🍢 🍭 🧀. Алмазный: ♪ ♫ ☀ ☁ ☄ ★ 🌊 🌧 ☽. Незеритовый: ⛏ 🪓 🪏 ⚒ ⚓ ⚔ 🎣 🗡 🔱 ✂ 🛡 🛠 ⚗.</p>
-<h3 class="rule-item-title">Перепривязка аккаунта</h3>
+<h3 class="rule-item-title" id="guide-account">Перепривязка аккаунта</h3>
 <p class="rule-text"><strong>Смена Minecraft-ника:</strong> зайдите под новым свободным ником, получите шестизначный код и отправьте его в Discord-канал <code>#отправь-код-сюда</code> со своего уже привязанного Discord-аккаунта. Старый ник должен быть офлайн. Привязка и игровые данные переносятся на новый ник; между такими сменами действует пауза 7 дней.</p>
 <p class="rule-text"><strong>Смена Discord:</strong> после подтверждённого входа в Lobby введите <code>/lumoriauth discord</code>. Отправьте показанный восьмизначный код в тот же канал уже с нового Discord-аккаунта. После смены войдите в Minecraft заново и подтвердите вход через новый Discord.</p>
-<h3 class="rule-item-title">Блок света</h3>
+<h3 class="rule-item-title" id="guide-light">Блок света</h3>
 <p class="rule-text">Подготовлен рецепт одного блока света: в верхнем ряду пыль светокамня посередине, в нижнем — кварц, факел, кварц. Наличие этого рецепта на работающем сервере пока не подтверждено; если крафт не срабатывает, сообщите администрации.</p>
 <p class="guide-links"><a href="https://discord.gg/dc2WhRhd3e" target="_blank" rel="noopener noreferrer">Задать вопрос в Discord ↗</a><a href="#rules" data-feed="rules">Читать правила сервера →</a></p>
 </div>
 </section>
-<section aria-labelledby="rules-title" class="rules section-shell reveal" id="rules">
+<section aria-labelledby="rules-title" class="rules reveal" id="rules">
 <div class="section-heading">
 <div>
 <h2 id="rules-title">Свод правил</h2>
@@ -251,10 +273,10 @@
 </a>
 </div>
 </div>
-<div class="rules-content">
+<div class="rules-content" id="rules-content">
 <!-- RULES:START -->
 <p class="rule-text">Добро пожаловать в Lumori! Здесь можно строить, исследовать мир, торговать, создавать города и проводить время с другими игроками. Чтобы всем было комфортно, просим соблюдать следующие правила.</p>
-<h2 class="rules-main-title">1. Общие положения</h2>
+<h2 id="rules-1" class="rules-main-title">1. Общие положения</h2>
 <hr/>
 <h3 class="rule-item-title">1.1. Согласие</h3>
 <p class="rule-text">Незнание правил не освобождает от ответственности. Начиная игру на сервере, вы подтверждаете, что ознакомились с действующими правилами Lumori и соглашаетесь их соблюдать.</p>
@@ -298,7 +320,7 @@
 <p class="rule-text">Ресурсы также могут быть возвращены, если их потеря стала следствием нарушения правил другим игроком, например гриферства или кражи.</p>
 <p class="rule-text">Возврат производится при наличии достаточных доказательств и по решению администрации. Предметы, потерянные по вине самого игрока или в ходе обычного игрового процесса, возврату не подлежат.</p>
 <p class="rule-text"><strong>Наказание:</strong> Не предусмотрено.</p>
-<h2 class="rules-main-title">2. Чат и общение</h2>
+<h2 id="rules-2" class="rules-main-title">2. Чат и общение</h2>
 <p class="rule-text">Требования этого раздела действуют в игровом чате, Simple Voice Chat, Discord Lumori, личных сообщениях, книгах, на табличках, в названиях предметов и существ, а также при использовании других способов общения.</p>
 <hr/>
 <h3 class="rule-item-title">2.1. Спам и флуд</h3>
@@ -361,7 +383,7 @@
 <h3 class="rule-item-title">2.15. Ложная информация</h3>
 <p class="rule-text">Запрещено намеренно распространять ложную информацию о сервере и его участниках.</p>
 <p class="rule-text"><strong>Наказание:</strong> Предупреждение, мут или временный бан в зависимости от ситуации — по решению администрации.</p>
-<h2 class="rules-main-title">3. Игровой процесс</h2>
+<h2 id="rules-3" class="rules-main-title">3. Игровой процесс</h2>
 <hr/>
 <h3 class="rule-item-title">3.1. Читы</h3>
 <p class="rule-text">Запрещены любые читы, программы и функции, предоставляющие нечестное игровое преимущество.</p>
@@ -431,7 +453,7 @@
 <h3 class="rule-item-title">3.16. Мошенничество, шантаж и вымогательство</h3>
 <p class="rule-text">Запрещены мошенничество, обман с целью получения выгоды, шантаж, вымогательство предметов, ресурсов, валюты или иных игровых ценностей, а также принуждение игроков к каким-либо действиям под угрозами или давлением.</p>
 <p class="rule-text"><strong>Наказание:</strong> Бан на срок по усмотрению администрации.</p>
-<h2 class="rules-main-title">4. Территории и постройки</h2>
+<h2 id="rules-4" class="rules-main-title">4. Территории и постройки</h2>
 <hr/>
 <h3 class="rule-item-title">4.1. Чужие территории</h3>
 <p class="rule-text">Запрещено без разрешения владельца проникать на чужую территорию, находиться на ней вопреки запрету, а также брать, ломать или использовать чужое имущество.</p>
@@ -481,7 +503,7 @@
 <h3 class="rule-item-title">4.11. Территориальные споры</h3>
 <p class="rule-text">Запрещено решать споры о территории посредством убийств, угроз и гриферства. Для разрешения спора необходимо создать тикет в «Поддержке».</p>
 <p class="rule-text"><strong>Наказание:</strong> Согласно фактически совершённым нарушениям.</p>
-<h2 class="rules-main-title">5. Торговля и экономика</h2>
+<h2 id="rules-5" class="rules-main-title">5. Торговля и экономика</h2>
 <hr/>
 <h3 class="rule-item-title">5.1. Валюта Lumori</h3>
 <p class="rule-text">Валюта сервера — АР. 1 АР = 1 блок алмазной руды, добытый киркой с зачарованием «Шёлковое касание».</p>
@@ -547,7 +569,7 @@
 <hr/>
 <h3 class="rule-item-title">5.18. Неактивные магазины</h3>
 <p class="rule-text">Если магазин длительное время не используется, администрация вправе отключить его и освободить торговое место. Если магазин используется как личное хранилище или намеренно сделан недоступным для покупателей, применяется наказание по п. 5.5.</p>
-<h2 class="rules-main-title">6. Города</h2>
+<h2 id="rules-6" class="rules-main-title">6. Города</h2>
 <hr/>
 <h3 class="rule-item-title">6.1. Создание города</h3>
 <p class="rule-text">Любой игрок может создать город командой <code>/town create &lt;название&gt;</code>. Для регистрации города и получения тега необходимо не менее 10 участников вместе с мэром. После достижения этого числа мэр вводит <code>/town register &lt;тег&gt;</code>; сейчас город регистрируется автоматически.</p>
@@ -591,7 +613,7 @@
 <h3 class="rule-item-title">6.10. Посторонние во время войны</h3>
 <p class="rule-text">Запрещено намеренно вмешиваться в официальную войну, не являясь её участником.</p>
 <p class="rule-text"><strong>Наказание:</strong> Предупреждение и удаление из зоны конфликта. При повторении — временный бан.</p>
-<h2 class="rules-main-title">7. Аккаунты и безопасность</h2>
+<h2 id="rules-7" class="rules-main-title">7. Аккаунты и безопасность</h2>
 <hr/>
 <h3 class="rule-item-title">7.1. Дополнительные аккаунты</h3>
 <p class="rule-text">Каждому игроку разрешён только один аккаунт. Владельцы подписки «Плюс» могут иметь один дополнительный аккаунт (твинк) с суффиксом <code>_tw</code>, при условии что подписка «Плюс» активна на обоих аккаунтах.</p>
@@ -618,7 +640,7 @@
 <h3 class="rule-item-title">7.6. Скины</h3>
 <p class="rule-text">Запрещены откровенно непристойные скины и намеренное использование чужого образа для обмана или выдачи себя за другого человека.</p>
 <p class="rule-text"><strong>Наказание:</strong> Требование сменить скин. При отказе — временный бан.</p>
-<h2 class="rules-main-title">Дополнительные положения</h2>
+<h2 id="rules-extra" class="rules-main-title">Дополнительные положения</h2>
 <hr/>
 <h3 class="rule-item-title">Связанный Discord-аккаунт</h3>
 <p class="rule-text">При серьёзных нарушениях правил администрация Lumori вправе дополнительно заблокировать связанный Discord-аккаунт игрока на официальном Discord-сервере Lumori.</p>
@@ -635,6 +657,8 @@
 </div>
 </section>
 </div>
+</div>
+</div>
 </main>
 <footer class="footer section-shell">
 <a class="footer-brand" href="#top"><picture><source media="(max-width: 920px)" srcset="assets/site/mobile/lumori-planet.webp" type="image/webp"/><img alt="" loading="lazy" src="assets/site/lumori-planet.png"/></picture><span>LUMORI</span></a>
@@ -643,6 +667,6 @@
 </footer>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
 <div aria-label="Галерея Lumori" aria-modal="true" class="gallery-lightbox" hidden="" id="gallery-lightbox" role="dialog"><div class="lightbox-header"><span>Галерея Lumori</span><span aria-live="polite" class="lightbox-counter"></span><button aria-label="Закрыть галерею" class="lightbox-close" type="button">✕</button></div><button aria-label="Предыдущее изображение" class="lightbox-arrow lightbox-prev" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5 8 12 15 19"/></svg></button><img alt="" id="lightbox-image"/><button aria-label="Следующее изображение" class="lightbox-arrow lightbox-next" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5 16 12 9 19"/></svg></button></div><script src="config.js"></script>
-<script src="script.js?v=lumori-guide-1"></script>
+<script src="script.js?v=lumori-docs-2"></script>
 </body>
 </html>

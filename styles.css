@@ -1314,3 +1314,45 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
 @media (max-width: 920px) {
   .topbar .nav .nav-map { grid-column: 1 / -1; }
 }
+
+/* Documentation index stays beside the content on wide screens. */
+.docs-shell { display: grid; grid-template-columns: 226px minmax(0, 1fr); gap: 24px; align-items: start; }
+.docs-main { min-width: 0; }
+.docs-main .rules { width: 100%; }
+.docs-main .rules:first-child { margin-top: 92px; }
+.docs-main .rules + .rules { margin-top: 54px; }
+.docs-sidebar {
+  position: sticky;
+  top: 112px;
+  max-height: calc(100vh - 128px);
+  overflow-y: auto;
+  margin-top: 92px;
+  padding: 20px 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(27, 13, 20, .92);
+  scrollbar-width: thin;
+}
+.docs-sidebar-title { padding: 0 10px 15px; color: #ffbfac; font-size: 11px; font-weight: 900; letter-spacing: .12em; }
+.docs-sidebar-group { display: grid; gap: 3px; margin-top: 14px; }
+.docs-sidebar-group:first-of-type { margin-top: 0; }
+.docs-sidebar-group strong { padding: 7px 10px; color: #fff6f2; font-size: 13px; }
+.docs-sidebar-group a { padding: 9px 10px; border-radius: 10px; color: #d9c6cb; font-size: 13px; line-height: 1.25; }
+.docs-sidebar-group a:hover,
+.docs-sidebar-group a.is-active { color: #fff; background: rgba(255, 194, 182, .13); }
+.docs-sidebar-group a:focus-visible { outline: 2px solid #ffbfae; outline-offset: 1px; }
+.docs-main [id^="guide-"], .docs-main [id^="rules-"] { scroll-margin-top: 112px; }
+#guide, #rules { scroll-margin-top: 112px; }
+@media (max-width: 800px) {
+  .docs-shell { grid-template-columns: 1fr; gap: 18px; }
+  .docs-sidebar { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 300px; margin-top: 28px; gap: 8px; }
+  .docs-sidebar-title { grid-column: 1 / -1; padding-bottom: 2px; }
+  .docs-sidebar-group { align-content: start; margin-top: 0; }
+  .docs-main .rules:first-child { margin-top: 18px; }
+  .docs-main [id^="guide-"], .docs-main [id^="rules-"] { scroll-margin-top: 18px; }
+  #guide, #rules, .docs-sidebar { scroll-margin-top: 18px; }
+}
+@media (max-width: 420px) {
+  .docs-sidebar { padding: 16px 8px; }
+  .docs-sidebar-group a { padding: 8px; font-size: 12px; }
+}

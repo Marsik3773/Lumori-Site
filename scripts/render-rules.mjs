@@ -46,7 +46,9 @@ for (const line of markdown.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n').split
     const isSection = heading[1].length === 2;
     const tag = isSection ? 'h2' : 'h3';
     if (!isSection) output.push('<hr/>');
-    output.push(`<${tag} class="${isSection ? 'rules-main-title' : 'rule-item-title'}">${inline(heading[2])}</${tag}>`);
+    const ruleNumber = isSection && /^([1-7])\./.exec(heading[2]);
+    const id = isSection ? ` id="${ruleNumber ? `rules-${ruleNumber[1]}` : 'rules-extra'}"` : '';
+    output.push(`<${tag}${id} class="${isSection ? 'rules-main-title' : 'rule-item-title'}">${inline(heading[2])}</${tag}>`);
   } else if (bullet) {
     if (paragraph.length) flush();
     list.push(bullet[1]);

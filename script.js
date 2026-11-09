@@ -200,12 +200,12 @@
     revealItems.forEach((el) => el.classList.add("visible"));
   }
 
-  // Переключение между двумя отдельными лентами сайта: "О сервере" и "Правила сервера".
+  // Переключение между главной страницей и справочником.
   const serverFeeds = $$(".server-feed");
   const rulesFeed = $("#rules-feed");
   const feedButtons = $$('[data-feed]');
 
-  function openFeed(type) {
+  function openFeed(type, instant = false) {
     const showServer = type === "server";
     serverFeeds.forEach((feed) => {
       feed.style.display = showServer ? "" : "none";
@@ -218,11 +218,16 @@
     }
 
     if (showServer) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: instant ? "auto" : "smooth" });
     } else {
-      const target = type === "guide" ? $("#guide") : $("#rules");
-      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const requested = location.hash && $(location.hash);
+      const target = requested && rulesFeed?.contains(requested)
+        ? requested : type === "guide" ? $("#guide") : $("#rules");
+      target?.scrollIntoView({ behavior: instant ? "auto" : "smooth", block: "start" });
     }
+    $$(".docs-sidebar a").forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === location.hash);
+    });
   }
 
   feedButtons.forEach((button) => {
@@ -237,7 +242,7 @@
   });
 
   function openFeedFromUrl() {
-    openFeed(location.hash === "#guide" ? "guide" : location.hash === "#rules-feed" || location.hash === "#rules" ? "rules" : "server");
+    openFeed(location.hash.startsWith("#guide") ? "guide" : location.hash.startsWith("#rules") ? "rules" : "server", true);
   }
   window.addEventListener("popstate", openFeedFromUrl);
   window.addEventListener("hashchange", openFeedFromUrl);
@@ -484,7 +489,7 @@
 // Also refresh from Markdown when Pages publishes the branch through Jekyll.
 // Keep the generated HTML if the request fails or JavaScript is unavailable.
 (async () => {
-  const container = document.querySelector('.rules-content');
+  const container = document.querySelector('#rules-content');
   if (!container) return;
   try {
     const response = await fetch('rules.md', { cache: 'no-store' });
@@ -527,7 +532,9 @@ for (const line of markdown.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n').split
     const isSection = heading[1].length === 2;
     const tag = isSection ? 'h2' : 'h3';
     if (!isSection) output.push('<hr/>');
-    output.push(`<${tag} class="${isSection ? 'rules-main-title' : 'rule-item-title'}">${inline(heading[2])}</${tag}>`);
+    const ruleNumber = isSection && /^([1-7])\./.exec(heading[2]);
+    const id = isSection ? ` id="${ruleNumber ? `rules-${ruleNumber[1]}` : 'rules-extra'}"` : '';
+    output.push(`<${tag}${id} class="${isSection ? 'rules-main-title' : 'rule-item-title'}">${inline(heading[2])}</${tag}>`);
   } else if (bullet) {
     if (paragraph.length) flush();
     list.push(bullet[1]);
