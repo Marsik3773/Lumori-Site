@@ -89,18 +89,6 @@ button { font: inherit; }
 .nav { display: flex; align-items: center; gap: 4px; }
 .nav a { padding: 12px 15px; border-radius: 13px; color: #d9c7ca; font-size: 14px; font-weight: 700; transition: .2s ease; }
 .nav a:hover { color: #fff; background: rgba(255,255,255,.055); }
-.nav .nav-shop {
-  background: linear-gradient(135deg, #ffd2b7 0%, #ff9d9c 48%, #ff79a7 100%);
-  color: #2a1018;
-  box-shadow: 0 0 24px rgba(255,126,166,.35);
-}
-.nav .nav-shop:hover {
-  color: #2a1018;
-  transform: translateY(-2px);
-  box-shadow: 0 0 34px rgba(255,126,166,.55);
-}
-.nav .nav-shop { color: #261016; background: linear-gradient(135deg, #ffd3bd, #ff8ea9); margin-left: 5px; }
-.nav .nav-shop:hover { color: #261016; transform: translateY(-1px); background: linear-gradient(135deg, #ffe0d1, #ffa4ba); }
 
 .hero {
   position: relative;
@@ -330,7 +318,6 @@ button { font: inherit; }
   .topbar { width: calc(100% - 20px); min-height: 60px; border-radius: 18px; }
   .brand img { width: 38px; height: 38px; }
   .brand span { font-size: 13px; }
-  .nav .nav-shop { padding: 10px 12px; }
   .hero { margin-top: 20px; border-radius: 25px; }
   .hero-copy { padding: 44px 22px 8px; }
   .hero h1 { font-size: clamp(64px, 21vw, 92px); margin-top: 18px; }
@@ -593,14 +580,13 @@ button { font: inherit; }
   box-shadow: 0 0 0 1px rgba(255, 210, 200, .12), 0 0 24px rgba(255, 126, 166, .34), 0 10px 28px rgba(255, 126, 166, .16);
 }
 
-.nav a:not(.nav-shop):hover,
+.nav a:hover,
 .ghost-btn:hover,
 .social-icon-btn:hover {
   background: linear-gradient(135deg, rgba(255, 210, 183, .22) 0%, rgba(255, 157, 156, .18) 48%, rgba(255, 121, 167, .20) 100%);
   border-color: rgba(255, 199, 190, .28);
 }
 
-.nav .nav-shop:hover,
 .primary-btn:hover {
   background: linear-gradient(135deg, #ffe0d1 0%, #ffb0ae 48%, #ff94b6 100%);
   color: #261016;
@@ -1209,8 +1195,7 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
     border-radius: 13px;
     justify-self: stretch;
   }
-  .topbar .nav a,
-  .topbar .nav a:not(.nav-shop) {
+  .topbar .nav a {
     display: flex;
     min-width: 0;
     min-height: 42px;
@@ -1222,7 +1207,6 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
     text-align: center;
     white-space: nowrap;
   }
-  .topbar .nav .nav-shop { margin-left: 0; }
   .hero { margin-top: 12px; }
   .hero-mark picture { width: min(368px, 78vw); }
 
@@ -1257,10 +1241,57 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
 }
 
 @media (max-width: 360px) {
-  .topbar .nav a, .topbar .nav a:not(.nav-shop) { font-size: 11px; }
+  .topbar .nav a { font-size: 11px; }
   .topbar .brand-copy small { display: none; }
 }
 
 @media (hover: none) {
   .nav a:hover, .primary-btn:hover, .gallery-open:hover img { transform: none; }
+}
+
+/* Quiet gallery navigation with a shared chevron style. */
+.gallery-arrow,
+.lightbox-arrow {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 226, 215, .17);
+  border-radius: 50%;
+  color: #f7e7e5;
+  background: rgba(255, 255, 255, .035);
+  box-shadow: none;
+  font-size: 0;
+  line-height: 0;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.gallery-arrow { width: 38px; height: 38px; }
+.lightbox-arrow { width: 44px; height: 44px; }
+.gallery-arrow::before,
+.lightbox-arrow::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.gallery-prev::before,
+.lightbox-prev::before { transform: translateX(2px) rotate(-135deg); }
+.gallery-next::before,
+.lightbox-next::before { transform: translateX(-2px) rotate(45deg); }
+.gallery-arrow:hover,
+.lightbox-arrow:hover {
+  color: #fff;
+  border-color: rgba(255, 194, 182, .36);
+  background: rgba(255, 194, 182, .11);
+}
+.gallery-arrow:hover { transform: none; }
+.lightbox-arrow:hover { transform: translateY(-50%); }
+@media (max-width: 480px) {
+  .lightbox-arrow:hover { transform: none; }
+}
+.gallery-arrow:focus-visible,
+.lightbox-arrow:focus-visible {
+  outline: 2px solid #ffbfae;
+  outline-offset: 3px;
 }
