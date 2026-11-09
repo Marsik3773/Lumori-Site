@@ -220,7 +220,8 @@
     if (showServer) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      rulesFeed?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const target = type === "guide" ? $("#guide") : $("#rules");
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
 
@@ -236,7 +237,7 @@
   });
 
   function openFeedFromUrl() {
-    openFeed(location.hash === "#rules-feed" || location.hash === "#rules" ? "rules" : "server");
+    openFeed(location.hash === "#guide" ? "guide" : location.hash === "#rules-feed" || location.hash === "#rules" ? "rules" : "server");
   }
   window.addEventListener("popstate", openFeedFromUrl);
   window.addEventListener("hashchange", openFeedFromUrl);
@@ -273,7 +274,7 @@
   incoming.setAttribute('aria-hidden', 'true');
   openButton.insertBefore(incoming, preview.nextSibling);
 
-  function render() {
+  function render(animateIndicator = false) {
     if (!images.length) return;
     const src = images[index];
     preview.src = src;
@@ -296,14 +297,25 @@
       dots.append(button);
     });
     dots.append(indicator);
-    setIndicator(index, false);
+    setIndicator(index, animateIndicator);
   }
   function setIndicator(target, animate = true) {
-    // Движение бегунка начинается в тот же кадр, что и движение изображения.
-    indicator.style.transition = animate && !reducedMotion.matches
-      ? `transform ${slideMs}ms cubic-bezier(.22,.68,.2,1)` : 'none';
     const button = dots.querySelectorAll('.gallery-dot')[target];
-    if (button) indicator.style.transform = `translateX(${button.offsetLeft}px)`;
+    if (button) {
+      const nextLeft = button.offsetLeft + (button.offsetWidth - 8) / 2;
+      const previousLeft = Number.parseFloat(indicator.style.left);
+      indicator.getAnimations?.().forEach((animation) => animation.cancel());
+      indicator.style.left = `${nextLeft}px`;
+      if (animate && !reducedMotion.matches && Number.isFinite(previousLeft) && previousLeft !== nextLeft) {
+        const middleLeft = Math.min(previousLeft, nextLeft);
+        const stretchedWidth = Math.abs(nextLeft - previousLeft) + 8;
+        indicator.animate([
+          { left: `${previousLeft}px`, width: '8px' },
+          { left: `${middleLeft}px`, width: `${stretchedWidth}px`, offset: .5 },
+          { left: `${nextLeft}px`, width: '8px' }
+        ], { duration: slideMs, easing: 'ease-in-out' });
+      }
+    }
     dots.querySelectorAll('.gallery-dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === target);
       if (i === target) dot.setAttribute('aria-current', 'true');
@@ -325,7 +337,7 @@
       render();
       return;
     }
-    if (reducedMotion.matches || compactViewport.matches) { index = target; render(); return; }
+    if (reducedMotion.matches || compactViewport.matches) { index = target; render(true); return; }
     animating = true;
     const from = direction > 0 ? '100%' : '-100%';
     const to = direction > 0 ? '-100%' : '100%';

@@ -1135,11 +1135,11 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
 }
 .gallery-dots .gallery-dot.active::after { opacity: 0; }
 .gallery-dots .gallery-active-indicator {
-  position: absolute; top: 50%; left: 0; width: 24px; height: 9px;
-  margin-top: -4.5px; border-radius: 99px; pointer-events: none;
+  position: absolute; top: 50%; left: 0; width: 8px; height: 8px;
+  margin-top: -4px; border-radius: 50%; pointer-events: none;
   background: linear-gradient(135deg,#ffd2b7,#ff79a7);
   box-shadow: 0 0 10px rgba(255,130,170,.28);
-  will-change: transform;
+  will-change: left, width;
 }
 
 /* Compact navigation and static decoration for touch-sized screens. */
@@ -1260,25 +1260,23 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
   color: #f7e7e5;
   background: rgba(255, 255, 255, .035);
   box-shadow: none;
-  font-size: 0;
-  line-height: 0;
+  line-height: 1;
   transition: background .2s ease, border-color .2s ease, color .2s ease;
 }
 .gallery-arrow { width: 38px; height: 38px; }
 .lightbox-arrow { width: 44px; height: 44px; }
-.gallery-arrow::before,
-.lightbox-arrow::before {
-  content: "";
+.gallery-arrow svg,
+.lightbox-arrow svg {
   display: block;
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
+  width: 18px;
+  height: 18px;
+  margin: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.gallery-prev::before,
-.lightbox-prev::before { transform: translateX(2px) rotate(-135deg); }
-.gallery-next::before,
-.lightbox-next::before { transform: translateX(-2px) rotate(45deg); }
 .gallery-arrow:hover,
 .lightbox-arrow:hover {
   color: #fff;
@@ -1294,4 +1292,25 @@ body > .lumori-sky i:nth-child(24){left:11%;top:94%;animation-duration:27s;anima
 .lightbox-arrow:focus-visible {
   outline: 2px solid #ffbfae;
   outline-offset: 3px;
+}
+
+.guide-content .rule-item-title:first-child { margin-top: 0; }
+.guide-content code { color: #ffe0d2; }
+.guide-content a { color: #ffd2c7; text-decoration: underline; text-underline-offset: 3px; }
+.guide-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 28px; }
+.guide-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .04);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.guide-links a:hover { background: rgba(255, 194, 182, .1); }
+@media (max-width: 920px) {
+  .topbar .nav .nav-map { grid-column: 1 / -1; }
 }
